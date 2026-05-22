@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Compliance Regulatorio · Marco Normativo Financiero | REKUPERAT</title>
+  <meta name="description" content="Marco completo de compliance financiero de Rekuperat: SBS, UIF-Perú, INDECOPI, DCF, Centrales de Riesgo y Ley N° 29733. Transparencia regulatoria interbancaria total." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rekuperat.com/compliance" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Grids responsive */
+    .comp-detail {
+      background: white;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .comp-detail:hover {
+      box-shadow: var(--shadow-card);
+      border-color: var(--blue-light);
+      transform: translateY(-2px);
+    }
+    .comp-header {
+      display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem;
+      padding-bottom: 1.25rem; border-bottom: 1px solid var(--border);
+    }
+    .reg-icon {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-weight: 800; font-size: .82rem; line-height: 1.2; text-align: center;
+    }
+    .grid-comp-inner {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+    }
+    .impl-check {
+      display: flex; align-items: flex-start; gap: .625rem;
+      font-size: .875rem; color: var(--text-body); margin-bottom: .75rem; line-height: 1.5;
+    }
+    .impl-check svg { flex-shrink: 0; margin-top: 1px; }
+
+    @media (max-width: 900px) {
+      #desktopNav { display:none!important; }
+      #menuBtn    { display:flex!important; }
+      #ctaNavBtn  { display:none!important; }
+      .grid-comp-inner { grid-template-columns: 1fr!important; gap: 1rem!important; }
+      .grid-footer { grid-template-columns: 1fr 1fr!important; }
+    }
+    @media (max-width: 600px) {
+      .comp-detail { padding: 1.5rem; }
+      .grid-footer { grid-template-columns: 1fr!important; }
+    }
+
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .au1 { animation:slideUp .7s ease forwards; }
+    .au2 { animation:slideUp .7s .15s ease forwards; opacity:0; }
+    .au3 { animation:slideUp .7s .3s ease forwards; opacity:0; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE LOADER ═══ -->
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+  <div class="loader-logo-wrap">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" class="loader-logo" />
+  </div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-tagline">Cargando plataforma</div>
+</div>
+
+<!-- ═══ MOBILE OVERLAY + MENU ═══ -->
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil" role="navigation">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:42px;" />
+    <button id="menuClose" aria-label="Cerrar menú" style="background:none;border:none;cursor:pointer;color:var(--text-muted);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <a href="index.html"           class="mobile-link">Inicio</a>
+  <a href="portal-deudor.html"   class="mobile-link">Portal Deudor</a>
+  <a href="portal-acreedor.html" class="mobile-link">Portal Acreedor</a>
+  <a href="compliance.html"      class="mobile-link" style="color:var(--blue);font-weight:700;">Compliance</a>
+  <a href="contacto.html"        class="mobile-link">Contacto</a>
+  <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.75rem;">
+    <a href="portal-acreedor.html#demo-form" class="btn btn-primary" style="justify-content:center;">Solicitar Demo B2B</a>
+    <a href="portal-deudor.html"             class="btn btn-outline"  style="justify-content:center;">Portal Deudor</a>
+  </div>
+</nav>
+
+<!-- ═══ NAVBAR ═══ -->
+<header class="navbar" role="banner">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;">
+    <a href="index.html" class="nav-logo" aria-label="Rekuperat - Inicio">
+      <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" />
+    </a>
+    <nav style="display:flex;align-items:center;gap:1.75rem;" id="desktopNav" aria-label="Navegación">
+      <a href="index.html"           class="nav-link">Inicio</a>
+      <a href="portal-deudor.html"   class="nav-link">Portal Deudor</a>
+      <a href="portal-acreedor.html" class="nav-link">Portal Acreedor</a>
+      <a href="contacto.html"        class="nav-link">Contacto</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <a href="portal-acreedor.html#demo-form" class="btn btn-primary" id="ctaNavBtn">Solicitar Demo</a>
+      <button id="menuBtn" aria-label="Abrir menú" style="background:none;border:none;cursor:pointer;color:var(--navy);display:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section style="background:linear-gradient(135deg,#0D1B4B 0%,#1B2D78 45%,#1565C0 100%);min-height:48vh;display:flex;align-items:center;padding-top:100px;padding-bottom:3rem;position:relative;overflow:hidden;" aria-labelledby="comp-h">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 80% 40%,rgba(124,179,66,.15),transparent);pointer-events:none;"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div style="max-width:700px;">
+      <div class="section-tag" style="background:rgba(124,179,66,.15);border-color:rgba(124,179,66,.3);color:var(--green);margin-bottom:1rem;" class="au1">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Transparencia Regulatoria · Blindaje Interbancario
+      </div>
+      <h1 id="comp-h" style="color:white;font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.12;letter-spacing:-.02em;margin-bottom:1rem;" class="au2">
+        Matriz de <span style="color:var(--green);">Compliance</span><br/>Interbancario Integral
+      </h1>
+      <p style="color:rgba(255,255,255,.68);font-size:1.05rem;line-height:1.75;max-width:580px;margin-bottom:2rem;" class="au3">
+        Rekuperat exhibe de manera abierta su estructura de RegTech. Cada módulo de la plataforma
+        cumple con el marco supervisor financiero del Perú de extremo a extremo, eliminando el
+        riesgo regulatorio para las entidades financieras contratantes.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:.875rem;" class="au3">
+        <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:.4rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);"></span>SBS · Res. 2757-2023
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:.4rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);"></span>UIF · SPLAFT
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:.4rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);"></span>INDECOPI · Ley 29571
+        </span>
+        <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:white;padding:.4rem 1rem;border-radius:100px;font-size:.8rem;font-weight:600;">
+          <span style="width:8px;height:8px;border-radius:50%;background:var(--green);"></span>LPDP · Ley 29733
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPLIANCE MATRIX TABLE ═══ -->
+<section class="section" style="background:var(--bg);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="section-tag" data-aos="fade-up">Vista Rápida</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Resumen del <span class="accent-blue">Marco Regulatorio</span></h2>
+    </div>
+    <div class="comp-table" data-aos="fade-up" data-aos-delay="150">
+      <div class="comp-head" role="row">
+        <div class="comp-cell" role="columnheader">Regulador</div>
+        <div class="comp-cell" role="columnheader">Marco Normativo</div>
+        <div class="comp-cell" role="columnheader">Implementación Rekuperat</div>
+      </div>
+      <div class="comp-row" role="row">
+        <div class="comp-cell"><div class="reg-badge">SBS</div><p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem;">Superintendencia de Banca</p></div>
+        <div class="comp-cell"><strong style="color:var(--navy);font-size:.85rem;">Resolución N° 2757-2023 · Ley N° 26702</strong><p style="color:var(--text-muted);font-size:.82rem;margin-top:.3rem;">Conducta de mercado, tercerizaciones críticas y secreto bancario.</p></div>
+        <div class="comp-cell"><p style="color:var(--text-body);font-size:.82rem;">AES-256 extremo a extremo. Auditorías automáticas de tokens B2B. Logs inmutables para auditoría SBS.</p></div>
+      </div>
+      <div class="comp-row" role="row">
+        <div class="comp-cell"><div class="reg-badge" style="background:var(--grad-green);">UIF</div><p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem;">Unidad de Int. Financiera</p></div>
+        <div class="comp-cell"><strong style="color:var(--navy);font-size:.85rem;">SPLAFT · Antilavado de Activos</strong><p style="color:var(--text-muted);font-size:.82rem;margin-top:.3rem;">Debida diligencia y reporte de operaciones sospechosas.</p></div>
+        <div class="comp-cell"><p style="color:var(--text-body);font-size:.82rem;">KYB y KYC automatizados en pasarelas. Detección algorítmica de patrones. Reporte automático a UIF.</p></div>
+      </div>
+      <div class="comp-row" role="row">
+        <div class="comp-cell"><div class="reg-badge" style="background:linear-gradient(135deg,#7B1FA2,#AB47BC);">DCF</div><p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem;">Defensoría del Cliente</p></div>
+        <div class="comp-cell"><strong style="color:var(--navy);font-size:.85rem;">Buenas Prácticas Interbancarias</strong><p style="color:var(--text-muted);font-size:.82rem;margin-top:.3rem;">Mecanismos de solución de controversias independientes.</p></div>
+        <div class="comp-cell"><p style="color:var(--text-body);font-size:.82rem;">Canal de conciliación virtual rápida en portal deudor. Acceso a resoluciones del gremio para mediación.</p></div>
+      </div>
+      <div class="comp-row" role="row">
+        <div class="comp-cell"><div class="reg-badge" style="background:linear-gradient(135deg,#E65100,#FF7043);">INDECOPI</div><p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem;">Instituto de Defensa</p></div>
+        <div class="comp-cell"><strong style="color:var(--navy);font-size:.85rem;">Ley N° 29571 · Código Consumidor</strong><p style="color:var(--text-muted);font-size:.82rem;margin-top:.3rem;">Prohibición de métodos coercitivos. Horarios regulados.</p></div>
+        <div class="comp-cell"><p style="color:var(--text-body);font-size:.82rem;">Bloqueo técnico programado. Contacto solo Lun-Vie 8am-8pm. No desactivable por el operador.</p></div>
+      </div>
+      <div class="comp-row" role="row">
+        <div class="comp-cell"><div class="reg-badge" style="background:linear-gradient(135deg,#1565C0,#29B6F6);">Centrales</div><p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem;">Equifax · Infocorp</p></div>
+        <div class="comp-cell"><strong style="color:var(--navy);font-size:.85rem;">Ley N° 27489 · Centrales de Riesgo</strong><p style="color:var(--text-muted);font-size:.82rem;margin-top:.3rem;">Derecho a actualización y rectificación de datos crediticios.</p></div>
+        <div class="comp-cell"><p style="color:var(--text-body);font-size:.82rem;">Reporte automático al cierre del pago. Constancia digital con firma electrónica inmediata.</p></div>
+      </div>
+      <div class="comp-row" role="row">
+        <div class="comp-cell"><div class="reg-badge" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">LPDP</div><p style="font-size:.75rem;color:var(--text-muted);margin-top:.5rem;">Ley de Datos Personales</p></div>
+        <div class="comp-cell"><strong style="color:var(--navy);font-size:.85rem;">Ley N° 29733 y Reglamento</strong><p style="color:var(--text-muted);font-size:.82rem;margin-top:.3rem;">Tratamiento legal de datos, consentimiento expreso y derecho al olvido.</p></div>
+        <div class="comp-cell"><p style="color:var(--text-body);font-size:.82rem;">Políticas de privacidad rigurosas. OTP por SMS. Derechos ARCO disponibles. Datos cifrados AES-256.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DETALLES REGULADORES ═══ -->
+<section class="section" style="background:white;" id="detalle">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag green" data-aos="fade-up">Detalle por Regulador</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Implementación Técnica <span class="accent-green">Regulador por Regulador</span>
+      </h2>
+      <p class="section-desc" style="margin:1rem auto 0;" data-aos="fade-up" data-aos-delay="200">
+        Documentación técnica que evidencia el cumplimiento específico de cada norma
+        financiera peruana en la arquitectura de la plataforma.
+      </p>
+    </div>
+
+    <!-- SBS -->
+    <div class="comp-detail" data-aos="fade-up" data-aos-delay="50">
+      <div class="comp-header">
+        <div class="reg-icon" style="background:var(--grad-blue);">SBS</div>
+        <div>
+          <h3 style="color:var(--navy);font-weight:800;font-size:1.2rem;margin-bottom:.35rem;">Superintendencia de Banca, Seguros y AFP</h3>
+          <p style="color:var(--text-muted);font-size:.875rem;">Resolución SBS N° 2757-2023 · Ley N° 26702 (Ley General del Sistema Financiero)</p>
+          <div style="display:inline-flex;align-items:center;gap:.375rem;background:var(--blue-xlight);border:1px solid var(--blue-light);color:var(--blue);font-size:.75rem;font-weight:700;padding:.25rem .75rem;border-radius:100px;margin-top:.5rem;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--green);"></span>
+            Cumplimiento Verificado
+          </div>
+        </div>
+      </div>
+      <div class="grid-comp-inner">
+        <div>
+          <h4 style="color:var(--navy);font-weight:700;font-size:.875rem;margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.05em;">Obligaciones Normativas</h4>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Gestión de conducta de mercado conforme a Resolución N° 2757-2023
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Control de tercerizaciones críticas con proveedores supervisados
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Secreto bancario protegido en cada sesión y transacción
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Gestión del riesgo operacional bajo estándares SBS
+          </div>
+        </div>
+        <div>
+          <h4 style="color:var(--navy);font-weight:700;font-size:.875rem;margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.05em;">Implementación Técnica en Rekuperat</h4>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Cifrado AES-256 extremo a extremo en todas las comunicaciones
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Auditorías automáticas de tokens en cada acceso B2B
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Logs inmutables disponibles para auditoría externa de la SBS
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Servidores bajo ISO 27001 y controles de acceso por roles
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UIF -->
+    <div class="comp-detail" data-aos="fade-up" data-aos-delay="80">
+      <div class="comp-header">
+        <div class="reg-icon" style="background:var(--grad-green);">UIF</div>
+        <div>
+          <h3 style="color:var(--navy);font-weight:800;font-size:1.2rem;margin-bottom:.35rem;">Unidad de Inteligencia Financiera · Perú</h3>
+          <p style="color:var(--text-muted);font-size:.875rem;">Sistema de Prevención del Lavado de Activos y Financiamiento del Terrorismo (SPLAFT)</p>
+          <div style="display:inline-flex;align-items:center;gap:.375rem;background:var(--green-xlight);border:1px solid var(--green-light);color:var(--green-dark);font-size:.75rem;font-weight:700;padding:.25rem .75rem;border-radius:100px;margin-top:.5rem;">
+            <span style="width:6px;height:6px;border-radius:50%;background:var(--green);"></span>
+            Integración SPLAFT Activa
+          </div>
+        </div>
+      </div>
+      <div class="grid-comp-inner">
+        <div>
+          <h4 style="color:var(--navy);font-weight:700;font-size:.875rem;margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.05em;">Obligaciones Normativas</h4>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Debida diligencia en todas las transacciones de cobro y pago
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Reporte de operaciones sospechosas (ROS) a UIF
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Prevención del financiamiento al terrorismo (PFT)
+          </div>
+        </div>
+        <div>
+          <h4 style="color:var(--navy);font-weight:700;font-size:.875rem;margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.05em;">Implementación Técnica en Rekuperat</h4>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Filtros KYB (Know Your Business) y KYC (Know Your Customer) automatizados
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Detección algorítmica de patrones inusuales en amortización de deudas
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Reporte automático de alertas a UIF en tiempo real
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INDECOPI -->
+    <div class="comp-detail" data-aos="fade-up" data-aos-delay="110">
+      <div class="comp-header">
+        <div class="reg-icon" style="background:linear-gradient(135deg,#E65100,#FF7043);font-size:.72rem;">INDE<br/>COPI</div>
+        <div>
+          <h3 style="color:var(--navy);font-weight:800;font-size:1.2rem;margin-bottom:.35rem;">INDECOPI · Instituto de Defensa de la Competencia</h3>
+          <p style="color:var(--text-muted);font-size:.875rem;">Código de Protección al Consumidor · Ley N° 29571</p>
+          <div style="display:inline-flex;align-items:center;gap:.375rem;background:#FFF3E0;border:1px solid #FFCC80;color:#E65100;font-size:.75rem;font-weight:700;padding:.25rem .75rem;border-radius:100px;margin-top:.5rem;">
+            <span style="width:6px;height:6px;border-radius:50%;background:#FF7043;"></span>
+            Bloqueo Técnico Activo
+          </div>
+        </div>
+      </div>
+      <div style="background:var(--green-xlight);border:1px solid var(--green-light);border-radius:var(--radius);padding:1.25rem;margin-bottom:1.5rem;">
+        <div style="display:flex;align-items:center;gap:.625rem;color:var(--green-dark);font-weight:700;font-size:.9rem;margin-bottom:.5rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Bloqueo técnico programado en servidor — No desactivable
+        </div>
+        <p style="color:var(--text-body);font-size:.875rem;line-height:1.65;">
+          Las notificaciones, SMS, emails y llamadas están restringidas automáticamente a días hábiles
+          <strong>lunes a viernes de 8:00 am a 8:00 pm</strong>, conforme a la Ley N° 29571.
+          Esta restricción es a nivel de servidor y <strong>no puede ser desactivada</strong> por el operador
+          de la entidad acreedora, garantizando el cumplimiento total ante INDECOPI.
+        </p>
+      </div>
+      <div class="grid-comp-inner">
+        <div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Prohibición de métodos coercitivos o de acoso
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Respeto a la privacidad e intimidad del deudor
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Información veraz y no engañosa
+          </div>
+        </div>
+        <div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Registro auditables de cada contacto realizado
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Canal de quejas y libro de reclamaciones digital
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Lenguaje claro y sin terminología intimidatoria
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LPDP -->
+    <div class="comp-detail" data-aos="fade-up" data-aos-delay="140">
+      <div class="comp-header">
+        <div class="reg-icon" style="background:linear-gradient(135deg,#2E7D32,#66BB6A);">LPDP</div>
+        <div>
+          <h3 style="color:var(--navy);font-weight:800;font-size:1.2rem;margin-bottom:.35rem;">Ley de Protección de Datos Personales</h3>
+          <p style="color:var(--text-muted);font-size:.875rem;">Ley N° 29733 y su Reglamento D.S. N° 003-2013-JUS · Autoridad Nacional de Protección de Datos</p>
+        </div>
+      </div>
+      <div class="grid-comp-inner">
+        <div>
+          <h4 style="color:var(--navy);font-weight:700;font-size:.875rem;margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.05em;">Derechos ARCO del Titular</h4>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div><strong>Acceso:</strong> consultar qué datos tiene Rekuperat sobre ti</div>
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div><strong>Rectificación:</strong> corregir datos inexactos o desactualizados</div>
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div><strong>Cancelación:</strong> eliminar datos cuando no sean necesarios</div>
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <div><strong>Oposición:</strong> oponerse al tratamiento para ciertas finalidades</div>
+          </div>
+        </div>
+        <div>
+          <h4 style="color:var(--navy);font-weight:700;font-size:.875rem;margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.05em;">Medidas Técnicas Implementadas</h4>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Cifrado AES-256 de todos los datos en tránsito y en reposo
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Autenticación OTP por SMS para cada sesión
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Consentimiento expreso e inequívoco documentado
+          </div>
+          <div class="impl-check">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Retención mínima de datos · Eliminación segura al vencimiento
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section style="background:linear-gradient(135deg,var(--navy-dark),var(--navy));padding:4rem 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;margin-bottom:1rem;" data-aos="fade-up">
+      ¿Necesitas más información de compliance?
+    </h2>
+    <p style="color:rgba(255,255,255,.65);font-size:1.05rem;max-width:520px;margin:0 auto 2rem;" data-aos="fade-up" data-aos-delay="100">
+      Nuestro equipo legal puede proporcionar documentación detallada, NDA y un informe
+      de cumplimiento personalizado para tu comité de auditoría.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;" data-aos="fade-up" data-aos-delay="200">
+      <a href="contacto.html" class="btn btn-green btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+        Solicitar Informe de Compliance
+      </a>
+      <a href="portal-acreedor.html#demo-form" class="btn btn-ghost-white btn-lg">
+        Ver Demo B2B
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;" class="grid-footer">
+        <div>
+          <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:52px;border-radius:8px;background:white;padding:5px;margin-bottom:1.25rem;" />
+          <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.75;max-width:280px;margin-bottom:1.5rem;">
+            Infraestructura RegTech y Plataforma Fintech para la Cobranza y Reinserción en el Sistema Financiero Regulado del Perú.
+          </p>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Portales</h4>
+          <a href="portal-deudor.html"   class="footer-link">Portal Deudor</a>
+          <a href="portal-acreedor.html" class="footer-link">Portal Acreedor</a>
+          <a href="contacto.html"        class="footer-link">Contacto</a>
+          <a href="index.html"           class="footer-link">Inicio</a>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal</h4>
+          <a href="privacidad.html" class="footer-link">Política de Privacidad</a>
+          <a href="terminos.html"   class="footer-link">Términos de Servicio</a>
+          <a href="compliance.html" class="footer-link">Compliance Regulatorio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p style="color:rgba(255,255,255,.38);font-size:.8rem;">© 2026 <strong style="color:rgba(255,255,255,.6);">RECUPERAT S.A.C.</strong> · info@recuperat.com</p>
+    <span style="display:flex;align-items:center;gap:.4rem;color:var(--green);font-size:.75rem;font-weight:600;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></span>
+      Plataforma Activa 24/7
+    </span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Volver al inicio">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- Scripts — animations.js PRIMERO para AOS.init() -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/security.js"   defer></script>
+<script src="assets/js/seo.js"        defer></script>
+<script src="assets/js/app.js"        defer></script>
+
+</body>
+</html>

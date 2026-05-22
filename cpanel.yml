@@ -1,0 +1,25 @@
+---
+# REKUPERAT — cPanel Deployment Configuration
+# Versión: 1.0 · Dominio: rekuperat.com
+
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/rekuperat/public_html/
+
+    # Copia de archivos
+    - /bin/cp -r * $DEPLOYPATH
+
+    # Limpieza de archivos de desarrollo
+    - /bin/rm -f $DEPLOYPATH/cpanel.yml
+    - /bin/rm -f $DEPLOYPATH/.env
+    - /bin/rm -f $DEPLOYPATH/promt.md
+    - /bin/rm -f $DEPLOYPATH/contexto.md
+
+    # Permisos correctos
+    - /bin/chmod 755 $DEPLOYPATH
+    - /bin/chmod 644 $DEPLOYPATH/.htaccess
+    - /bin/find $DEPLOYPATH -type f -exec chmod 644 {} \;
+    - /bin/find $DEPLOYPATH -type d -exec chmod 755 {} \;
+
+    # Limpieza de caché del servidor
+    - /usr/bin/php -r "opcache_reset();" 2>/dev/null || true

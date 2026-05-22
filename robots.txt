@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /assets/
+Disallow: /.htaccess
+Disallow: /cpanel.yml
+
+Sitemap: https://rekuperat.com/sitemap.xml

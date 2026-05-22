@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto · Demo y Consultas | REKUPERAT Fintech Perú</title>
+  <meta name="description" content="Contacta a Rekuperat para solicitar una demo, consultar sobre gestión de cartera vencida o servicios de compliance financiero. Lima y Chiclayo, Perú." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rekuperat.com/contacto" />
+  <!-- OG -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contacto · Demo y Consultas | Rekuperat" />
+  <meta property="og:description" content="Contacta a Rekuperat para solicitar una demo o consultar sobre compliance financiero en Perú." />
+  <meta property="og:url" content="https://rekuperat.com/contacto" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* ── Hero keyframes ── */
+    @keyframes cu1 { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:none; } }
+    @keyframes cu2 { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:none; } }
+    @keyframes cu3 { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:none; } }
+
+    .ch1 { animation: cu1 .7s ease-out .1s both; }
+    .ch2 { animation: cu2 .7s ease-out .25s both; }
+    .ch3 { animation: cu3 .7s ease-out .4s both; }
+    .ch4 { animation: cu3 .7s ease-out .55s both; }
+
+    /* ── Contact layout ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    /* ── Info cards ── */
+    .cinfo-card {
+      background: var(--navy);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+    }
+    .cinfo-title {
+      color: white;
+      font-weight: 800;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+    }
+    .cinfo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .cinfo-ico {
+      width: 42px; height: 42px; min-width: 42px;
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green);
+    }
+    .cinfo-ico.blue { color: var(--blue-mid); }
+    .cinfo-lbl {
+      color: rgba(255,255,255,.5);
+      font-size: .75rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 600;
+      margin-bottom: .2rem;
+    }
+    .cinfo-val {
+      color: white;
+      font-size: .9rem;
+      font-weight: 500;
+    }
+    .cinfo-badge {
+      border-radius: var(--radius);
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+    .cinfo-badge.green {
+      background: rgba(124,179,66,.1);
+      border: 1px solid rgba(124,179,66,.25);
+    }
+    .cinfo-badge.blue {
+      background: rgba(21,101,192,.15);
+      border: 1px solid rgba(21,101,192,.25);
+    }
+    .cinfo-badge-title {
+      font-weight: 600;
+      font-size: .82rem;
+      margin-bottom: .3rem;
+    }
+    .cinfo-badge.green .cinfo-badge-title { color: var(--green); }
+    .cinfo-badge.blue  .cinfo-badge-title { color: var(--blue-light); }
+    .cinfo-badge-body {
+      color: rgba(255,255,255,.6);
+      font-size: .8rem;
+      line-height: 1.5;
+    }
+    .cinfo-badge a {
+      color: var(--green);
+      font-size: .8rem;
+      font-weight: 600;
+      margin-top: .4rem;
+      display: inline-block;
+    }
+
+    /* ── Form card ── */
+    .form-card {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--border);
+    }
+    .form-card-title {
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin-bottom: 1.75rem;
+    }
+    .form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-field { margin-bottom: 1rem; }
+    .form-field:last-of-type { margin-bottom: 1.5rem; }
+
+    /* ── Custom checkbox (outside any media query) ── */
+    .custom-check {
+      width: 18px; height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--silver-mid, #B0BEC5);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: var(--transition);
+      background-size: 12px;
+      background-position: center;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+    .custom-check:checked {
+      background-color: var(--blue);
+      border-color: var(--blue);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+    .consent-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-bottom: 1.5rem;
+    }
+    .consent-label {
+      font-size: .82rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      cursor: pointer;
+    }
+
+    /* ── Channel cards ── */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .channel-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+    .channel-ico {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .channel-ico.navy  { background: var(--grad-blue); color: white; }
+    .channel-ico.green { background: var(--grad-green); color: white; }
+    .channel-ico.silver { background: var(--bg-alt); color: var(--navy); }
+    .channel-name  { font-weight: 700; color: var(--navy); margin-bottom: .4rem; }
+    .channel-desc  { font-size: .82rem; color: var(--text-muted); line-height: 1.5; }
+    .channel-link  { color: var(--blue); font-size: .85rem; font-weight: 600; margin-top: .75rem; display: inline-block; }
+
+    /* ── FAQ ── */
+    .faq-grid { max-width: 720px; margin: 0 auto; }
+
+    /* ── CTA ── */
+    .cta-contact {
+      background: var(--grad-hero);
+      border-radius: var(--radius-xl);
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 5rem;
+    }
+    .cta-contact h2 { color: white; font-weight: 800; font-size: 1.6rem; margin-bottom: .75rem; }
+    .cta-contact p  { color: rgba(255,255,255,.7); margin-bottom: 1.75rem; }
+
+    /* ── Hero stats strip ── */
+    .hero-stats-strip {
+      display: inline-grid;
+      grid-template-columns: repeat(3, auto);
+      gap: 2rem 3rem;
+    }
+
+    /* ── Responsive ── */
+    @media(max-width:900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .cinfo-card { padding: 2rem 1.5rem; }
+    }
+    @media(max-width:700px) {
+      .form-row-2   { grid-template-columns: 1fr; }
+      .channel-grid { grid-template-columns: 1fr; }
+      .form-card    { padding: 1.75rem 1.25rem; }
+    }
+    @media(max-width:520px) {
+      .hero-stats-strip { grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
+      .cta-contact { padding: 2rem 1.25rem; }
+      .cta-contact h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<!-- ════ PAGE LOADER ════ -->
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+  <div class="loader-logo-wrap">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" class="loader-logo" />
+  </div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-tagline">Cargando plataforma</div>
+</div>
+
+<!-- ════ PROGRESS BAR ════ -->
+<div class="progress-bar"></div>
+
+<!-- ════ MOBILE OVERLAY ════ -->
+<div id="mobileOverlay" class="mobile-overlay" aria-hidden="true"></div>
+
+<!-- ════ MOBILE MENU ════ -->
+<nav id="mobileMenu" class="mobile-menu" aria-label="Menú móvil">
+  <div class="mobile-menu-header">
+    <a href="index.html"><img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:38px;border-radius:4px;" /></a>
+    <button id="menuClose" class="menu-close" aria-label="Cerrar menú">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu-links">
+    <a href="index.html" class="mobile-link">Inicio</a>
+    <a href="portal-deudor.html" class="mobile-link">Portal Deudor</a>
+    <a href="portal-acreedor.html" class="mobile-link">Portal Acreedor</a>
+    <a href="compliance.html" class="mobile-link">Compliance</a>
+    <a href="contacto.html" class="mobile-link active">Contacto</a>
+  </div>
+  <div style="padding:1.5rem;border-top:1px solid var(--border);">
+    <a href="portal-deudor.html#consulta" class="btn btn-primary" style="width:100%;justify-content:center;">Consultar mi deuda</a>
+    <a href="portal-acreedor.html#demo-form" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:.75rem;">Solicitar Demo</a>
+  </div>
+</nav>
+
+<!-- ════ NAVBAR ════ -->
+<header class="navbar" id="navbar">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1rem;">
+    <a href="index.html" class="nav-logo">
+      <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" />
+    </a>
+    <nav class="nav-links" aria-label="Navegación principal">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="portal-deudor.html" class="nav-link">Portal Deudor</a>
+      <a href="portal-acreedor.html" class="nav-link">Portal Acreedor</a>
+      <a href="compliance.html" class="nav-link">Compliance</a>
+      <a href="contacto.html" class="nav-link active">Contacto</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <a href="portal-acreedor.html#demo-form" class="btn btn-primary" id="ctaNavBtn" style="white-space:nowrap;">Solicitar Demo</a>
+      <button id="menuBtn" class="menu-btn" aria-label="Abrir menú">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════ HERO ════ -->
+<section style="background:var(--grad-hero);padding:130px 0 5rem;">
+  <div class="container" style="text-align:center;">
+    <div class="section-tag ch1" style="background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.2);">Contacto</div>
+    <h1 class="ch2" style="color:white;font-size:clamp(1.9rem,4vw,2.8rem);font-weight:900;margin:.75rem 0;">
+      ¿Cómo podemos <span style="color:var(--green);">ayudarte</span>?
+    </h1>
+    <p class="ch3" style="color:rgba(255,255,255,.75);font-size:1.1rem;max-width:560px;margin:0 auto 2.5rem;">
+      Un especialista te responderá en menos de 24 horas hábiles con un análisis inicial gratuito de tu situación.
+    </p>
+    <!-- Stats strip -->
+    <div class="ch4 hero-stats-strip">
+      <div>
+        <div style="color:white;font-size:1.6rem;font-weight:900;">&lt; 24h</div>
+        <div style="color:rgba(255,255,255,.55);font-size:.8rem;">Tiempo de respuesta</div>
+      </div>
+      <div>
+        <div style="color:var(--green);font-size:1.6rem;font-weight:900;">Gratis</div>
+        <div style="color:rgba(255,255,255,.55);font-size:.8rem;">Análisis inicial</div>
+      </div>
+      <div>
+        <div style="color:white;font-size:1.6rem;font-weight:900;">2</div>
+        <div style="color:rgba(255,255,255,.55);font-size:.8rem;">Sedes en Perú</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ MAIN CONTACT SECTION ════ -->
+<section style="padding:4rem 0 3rem;background:var(--bg-alt);">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- ── Left: Info ── -->
+      <div data-aos="fade-right">
+        <div class="cinfo-card">
+          <div class="cinfo-title">Información de Contacto</div>
+
+          <div class="cinfo-row">
+            <div class="cinfo-ico">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="cinfo-lbl">Email Oficial</div>
+              <div class="cinfo-val">info@rekuperat.com</div>
+            </div>
+          </div>
+
+          <div class="cinfo-row">
+            <div class="cinfo-ico blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="cinfo-lbl">Sede Lima · Oficina Principal</div>
+              <div class="cinfo-val">Av. República de Chile 324<br/>Jesús María, Lima 11</div>
+            </div>
+          </div>
+
+          <div class="cinfo-row">
+            <div class="cinfo-ico blue">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="cinfo-lbl">Sede Chiclayo · Soporte Regional</div>
+              <div class="cinfo-val">Lapoint 1221<br/>Chiclayo, Lambayeque</div>
+            </div>
+          </div>
+
+          <div class="cinfo-badge green">
+            <div class="cinfo-badge-title">⏰ Horario de Atención</div>
+            <div class="cinfo-badge-body">Lunes a Viernes · 8:00 am – 6:00 pm<br/>Hora Perú (GMT-5)</div>
+          </div>
+
+          <div class="cinfo-badge blue">
+            <div class="cinfo-badge-title">📚 Libro de Reclamaciones</div>
+            <div class="cinfo-badge-body">Disponible conforme a normativa INDECOPI. Respuesta máxima 15 días hábiles.</div>
+            <a href="#">Acceder al libro →</a>
+          </div>
+
+          <div class="cinfo-badge" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);margin-top:1rem;">
+            <div class="cinfo-badge-title" style="color:rgba(255,255,255,.7);">🔒 Seguridad y Privacidad</div>
+            <div class="cinfo-badge-body">Datos protegidos bajo Ley N° 29733. Tus comunicaciones son confidenciales.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Right: Form ── -->
+      <div data-aos="fade-left" data-aos-delay="100">
+        <div class="form-card">
+          <div class="form-card-title">Enviar Mensaje</div>
+          <form id="contactForm" novalidate>
+
+            <div class="form-row-2">
+              <div>
+                <label class="form-label" for="c-nombre">Nombre completo *</label>
+                <input type="text" id="c-nombre" name="nombre" class="form-input" placeholder="Juan Pérez" required data-validate="min" />
+                <span class="form-error-msg"></span>
+              </div>
+              <div>
+                <label class="form-label" for="c-empresa">Empresa / Entidad</label>
+                <input type="text" id="c-empresa" name="empresa" class="form-input" placeholder="Banco / MYPE / Nombre" />
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div>
+                <label class="form-label" for="c-email">Correo electrónico *</label>
+                <input type="email" id="c-email" name="email" class="form-input" placeholder="nombre@correo.com" required data-validate="email" />
+                <span class="form-error-msg"></span>
+              </div>
+              <div>
+                <label class="form-label" for="c-tel">Teléfono</label>
+                <input type="tel" id="c-tel" name="telefono" class="form-input" placeholder="+51 999 999 999" data-validate="phone" />
+                <span class="form-error-msg"></span>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="c-tipo">Motivo de contacto *</label>
+              <select id="c-tipo" name="tipo" class="form-input form-select" required>
+                <option value="">Selecciona una opción...</option>
+                <option>Quiero gestionar mi cartera vencida (Banco / Financiera)</option>
+                <option>Quiero limpiar mi historial crediticio (Deudor / MYPE)</option>
+                <option>Solicitar demo de la plataforma B2B</option>
+                <option>Consulta de compliance regulatorio</option>
+                <option>Consulta técnica / integración API</option>
+                <option>Libro de Reclamaciones</option>
+                <option>Otro</option>
+              </select>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="c-msg">Mensaje *</label>
+              <textarea id="c-msg" name="mensaje" class="form-input form-textarea" placeholder="Cuéntanos sobre tu consulta o situación..." required data-validate="min" data-min="10" rows="4"></textarea>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div class="consent-row">
+              <input type="checkbox" id="c-consent" name="consent" class="custom-check" style="margin-top:2px;" required />
+              <label for="c-consent" class="consent-label">
+                Acepto los <a href="terminos.html" style="color:var(--blue);font-weight:600;">Términos de Servicio</a> y la
+                <a href="privacidad.html" style="color:var(--blue);font-weight:600;">Política de Privacidad</a>
+                conforme a Ley N° 29733 (Protección de Datos Personales).
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:.5rem;"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+              Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CHANNEL CARDS ════ -->
+<section style="padding:4rem 0;background:white;">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:1rem;">
+      <div class="section-tag" data-aos="fade-up">Canales de Atención</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Elige tu canal preferido</h2>
+    </div>
+    <div class="channel-grid">
+      <div class="channel-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="channel-ico navy">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="channel-name">Correo Electrónico</div>
+        <div class="channel-desc">Para consultas formales, documentación y solicitudes regulatorias. Respuesta en menos de 24 horas hábiles.</div>
+        <a href="mailto:info@rekuperat.com" class="channel-link">info@rekuperat.com →</a>
+      </div>
+      <div class="channel-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="channel-ico green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="channel-name">Chat en Plataforma</div>
+        <div class="channel-desc">Soporte en tiempo real para usuarios activos dentro de los portales de deudor y acreedor.</div>
+        <a href="portal-deudor.html" class="channel-link">Ir al portal →</a>
+      </div>
+      <div class="channel-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="channel-ico silver">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9A16 16 0 0 0 15 16.09l1.8-1.8a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <div class="channel-name">Visita Presencial</div>
+        <div class="channel-desc">Reuniones con nuestros especialistas en Lima o Chiclayo. Coordinación previa recomendada.</div>
+        <a href="#contactForm" class="channel-link">Agendar reunión →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FAQ ════ -->
+<section style="padding:4rem 0 5rem;background:var(--bg-alt);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag" data-aos="fade-up">Preguntas Frecuentes</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Respuestas rápidas</h2>
+    </div>
+    <div class="faq-grid">
+
+      <div class="faq-item" data-aos="fade-up">
+        <div class="faq-question">
+          <span>¿Cuánto tiempo tarda en resolverse mi consulta?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>El primer contacto es en menos de 24 horas hábiles. Para casos de conciliación de deuda, el proceso completo puede tomar entre 3 y 15 días hábiles dependiendo de la entidad acreedora y la documentación disponible.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
+        <div class="faq-question">
+          <span>¿El servicio de consulta inicial tiene costo?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>No. El análisis inicial de tu situación crediticia es completamente gratuito. Los costos aplican solo cuando se formaliza un acuerdo de pago o se activan servicios B2B.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-question">
+          <span>¿Cómo solicito una demo del sistema para mi institución?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Puedes solicitar una demo desde el <a href="portal-acreedor.html#demo-form" style="color:var(--blue);font-weight:600;">Portal Acreedor</a> o llenando el formulario de esta página con el motivo "Solicitar demo de la plataforma B2B". Un ejecutivo comercial coordinará una sesión personalizada.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+        <div class="faq-question">
+          <span>¿Cómo presento una reclamación formal?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Puedes acceder al Libro de Reclamaciones desde esta misma página. También puedes escribir directamente a info@rekuperat.com indicando el número de operación. El plazo de respuesta es de máximo 15 días hábiles conforme a normativa INDECOPI (Ley N° 29571).</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="faq-question">
+          <span>¿Qué datos debo tener listos para la consulta?</span>
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Para deudores: DNI y nombre del banco o entidad. Para entidades acreedoras: RUC, nombre de contacto y tipo de cartera (monto aproximado). El resto del análisis lo realiza nuestro equipo.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ CTA ════ -->
+<section style="padding:3rem 0 5rem;background:white;">
+  <div class="container">
+    <div class="cta-contact" data-aos="zoom-in">
+      <div class="section-tag" style="background:rgba(255,255,255,.12);color:white;border-color:rgba(255,255,255,.2);margin-bottom:1rem;">Empieza hoy</div>
+      <h2>¿Listo para resolver tu situación?</h2>
+      <p>Únete a las miles de personas y empresas que ya gestionaron sus deudas con Rekuperat.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="portal-deudor.html#consulta" class="btn btn-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Consultar como Deudor
+        </a>
+        <a href="portal-acreedor.html#demo-form" class="btn btn-outline-white">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Demo para Acreedores
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer style="background:var(--navy-dark);padding:3rem 0 2rem;">
+  <div class="container">
+    <div style="gap:3rem;margin-bottom:2.5rem;" class="grid-footer">
+      <div>
+        <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:48px;border-radius:6px;background:white;padding:4px;margin-bottom:1rem;" />
+        <p style="color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.7;max-width:300px;">Plataforma RegTech peruana especializada en cobranza inteligente, conciliación de deudas y compliance financiero supervisado por SBS, UIF e INDECOPI.</p>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;margin-bottom:1rem;font-size:.875rem;">Plataformas</div>
+        <div style="display:flex;flex-direction:column;gap:.6rem;">
+          <a href="portal-deudor.html"    style="color:rgba(255,255,255,.5);font-size:.85rem;">Portal Deudor</a>
+          <a href="portal-acreedor.html"  style="color:rgba(255,255,255,.5);font-size:.85rem;">Portal Acreedor</a>
+          <a href="compliance.html"       style="color:rgba(255,255,255,.5);font-size:.85rem;">Compliance</a>
+          <a href="contacto.html"         style="color:rgba(255,255,255,.7);font-size:.85rem;">Contacto</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:rgba(255,255,255,.9);font-weight:700;margin-bottom:1rem;font-size:.875rem;">Legal</div>
+        <div style="display:flex;flex-direction:column;gap:.6rem;">
+          <a href="privacidad.html" style="color:rgba(255,255,255,.5);font-size:.85rem;">Privacidad</a>
+          <a href="terminos.html"   style="color:rgba(255,255,255,.5);font-size:.85rem;">Términos</a>
+        </div>
+        <div style="margin-top:1.5rem;">
+          <div style="color:rgba(255,255,255,.4);font-size:.75rem;margin-bottom:.4rem;">Supervisado por</div>
+          <div style="display:flex;flex-wrap:wrap;gap:.4rem;">
+            <span style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);padding:.2rem .6rem;border-radius:4px;font-size:.72rem;font-weight:600;">SBS</span>
+            <span style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);padding:.2rem .6rem;border-radius:4px;font-size:.72rem;font-weight:600;">UIF</span>
+            <span style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);padding:.2rem .6rem;border-radius:4px;font-size:.72rem;font-weight:600;">INDECOPI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.08);padding-top:1.5rem;text-align:center;">
+      <p style="color:rgba(255,255,255,.3);font-size:.78rem;">© 2026 RECUPERAT S.A.C. · RUC 20612345678 · Lima, Perú · Todos los derechos reservados</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ════ SCROLL TOP ════ -->
+<button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- ════ SCRIPTS — AOS CDN sync first, then deferred ════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/forms.js"      defer></script>
+<script src="assets/js/security.js"   defer></script>
+<script src="assets/js/seo.js"        defer></script>
+<script src="assets/js/app.js"        defer></script>
+</body>
+</html>

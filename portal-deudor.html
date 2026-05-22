@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Deudor · Rehabilitación Crediticia | REKUPERAT Fintech</title>
+  <meta name="description" content="Consulta tu deuda, negocia un plan de pago con descuentos reales y descarga tu Constancia de No Adeudo. Plataforma segura bajo Ley N° 29733 · OTP · AES-256." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rekuperat.com/portal-deudor" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* ── Estilos específicos del Portal Deudor ── */
+    .step-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      position: relative;
+      transition: var(--transition);
+    }
+    .step-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-5px);
+      border-color: var(--green-light);
+    }
+    .step-num {
+      position: absolute;
+      top: -14px;
+      left: 2rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--grad-green);
+      color: #fff;
+      font-weight: 800;
+      font-size: .82rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-green);
+    }
+    .semaforo-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      transition: var(--transition);
+    }
+    .semaforo-row:hover {
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+    .sem-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .feature-check {
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-bottom: .875rem;
+      font-size: .875rem;
+      color: var(--text-body);
+    }
+    .feature-check svg { flex-shrink: 0; margin-top: 2px; }
+
+    /* Checkbox custom — fuera de media queries para que funcione en desktop */
+    .custom-check {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--silver-mid);
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: var(--transition);
+      background-size: 12px;
+      background-position: center;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+    .custom-check:checked {
+      background-color: var(--blue);
+      border-color: var(--blue);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+
+    /* Grid responsive */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-2 { grid-template-columns: 1fr; }
+      .hero-deudor-inner { flex-direction: column; }
+    }
+
+    /* Hero animation */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-up { animation: slideUp .7s ease forwards; }
+    .animate-up-2 { animation: slideUp .7s .15s ease forwards; opacity: 0; }
+    .animate-up-3 { animation: slideUp .7s .3s ease forwards; opacity: 0; }
+    .animate-up-4 { animation: slideUp .7s .45s ease forwards; opacity: 0; }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE LOADER ═══ -->
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+  <div class="loader-logo-wrap">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" class="loader-logo" />
+  </div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-tagline">Cargando plataforma</div>
+</div>
+
+<!-- ═══ MOBILE OVERLAY + MENU ═══ -->
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil" role="navigation">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:42px;" />
+    <button id="menuClose" aria-label="Cerrar menú" style="background:none;border:none;cursor:pointer;color:var(--text-muted);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <a href="index.html"          class="mobile-link">Inicio</a>
+  <a href="portal-deudor.html"  class="mobile-link" style="color:var(--green);font-weight:700;">Portal Deudor</a>
+  <a href="portal-acreedor.html"class="mobile-link">Portal Acreedor</a>
+  <a href="compliance.html"     class="mobile-link">Compliance</a>
+  <a href="contacto.html"       class="mobile-link">Contacto</a>
+  <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.75rem;">
+    <a href="#consulta"             class="btn btn-green"   style="justify-content:center;">Consultar mi Deuda</a>
+    <a href="portal-acreedor.html"  class="btn btn-primary" style="justify-content:center;">Portal Acreedor</a>
+  </div>
+</nav>
+
+<!-- ═══ NAVBAR ═══ -->
+<header class="navbar" role="banner">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;">
+
+    <a href="index.html" class="nav-logo" aria-label="Rekuperat - Inicio">
+      <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" />
+    </a>
+
+    <nav style="display:flex;align-items:center;gap:1.75rem;" id="desktopNav" aria-label="Navegación">
+      <a href="index.html"          class="nav-link">Inicio</a>
+      <a href="compliance.html"     class="nav-link">Compliance</a>
+      <a href="contacto.html"       class="nav-link">Contacto</a>
+      <a href="portal-acreedor.html"class="nav-link">Portal Acreedor</a>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <a href="#consulta" class="btn btn-green" style="display:inline-flex;" id="ctaNavBtn">
+        Consultar mi Deuda
+      </a>
+      <button id="menuBtn" aria-label="Abrir menú" style="background:none;border:none;cursor:pointer;color:var(--navy);display:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section style="background:linear-gradient(135deg,#E3F2FD 0%,#BBDEFB 40%,#E8F5E9 100%);min-height:55vh;display:flex;align-items:center;padding-top:100px;padding-bottom:3rem;position:relative;overflow:hidden;" aria-labelledby="pd-heading">
+  <!-- Decorative grid -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(21,101,192,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(21,101,192,.06) 1px,transparent 1px);background-size:50px 50px;pointer-events:none;" aria-hidden="true"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="hero-deudor-inner" style="display:flex;align-items:center;gap:3rem;">
+
+      <!-- Text -->
+      <div style="flex:1;min-width:0;">
+        <div class="section-tag green animate-up" style="margin-bottom:1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Portal del Deudor · Ciudadanos y MYPES
+        </div>
+
+        <h1 id="pd-heading" style="font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;color:var(--navy);line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem;" class="animate-up-2">
+          Limpia tu Historial<br/>en <span style="color:var(--green);">Infocorp</span> en 3 Pasos
+        </h1>
+
+        <p style="font-size:1.05rem;color:var(--text-body);line-height:1.75;max-width:520px;margin-bottom:2rem;" class="animate-up-3">
+          Consulta tu deuda consolidada de forma segura, negocia un plan de pago con
+          descuentos reales y descarga tu <strong>Constancia de No Adeudo digital</strong>
+          al instante. 100% legal bajo Ley N° 29733.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;" class="animate-up-4">
+          <a href="#consulta" class="btn btn-green btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Consultar mi Deuda Ahora
+          </a>
+          <a href="contacto.html" class="btn btn-outline">
+            Hablar con un Especialista
+          </a>
+        </div>
+
+        <!-- Mini trust badges -->
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem;" class="animate-up-4">
+          <span style="display:inline-flex;align-items:center;gap:.375rem;background:#fff;border:1px solid var(--border);padding:.35rem .875rem;border-radius:100px;font-size:.78rem;font-weight:600;color:var(--navy);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            AES-256 Cifrado
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:.375rem;background:#fff;border:1px solid var(--border);padding:.35rem .875rem;border-radius:100px;font-size:.78rem;font-weight:600;color:var(--navy);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Autenticación OTP
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:.375rem;background:#fff;border:1px solid var(--border);padding:.35rem .875rem;border-radius:100px;font-size:.78rem;font-weight:600;color:var(--navy);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            Ley N° 29733
+          </span>
+          <span style="display:inline-flex;align-items:center;gap:.375rem;background:#fff;border:1px solid var(--border);padding:.35rem .875rem;border-radius:100px;font-size:.78rem;font-weight:600;color:var(--navy);">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+            INDECOPI Conforme
+          </span>
+        </div>
+      </div>
+
+      <!-- Info card -->
+      <div style="flex:0 0 300px;" class="animate-up-3">
+        <div style="background:white;border-radius:var(--radius-xl);padding:2rem;box-shadow:var(--shadow-lg);border:2px solid var(--blue-light);">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);">
+            <div style="width:44px;height:44px;border-radius:12px;background:var(--green-xlight);display:flex;align-items:center;justify-content:center;color:var(--green-dark);">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:800;color:var(--navy);font-size:.95rem;">Tu proceso seguro</div>
+              <div style="font-size:.78rem;color:var(--text-muted);">En 3 pasos simples</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.875rem;">
+            <div style="display:flex;align-items:center;gap:.75rem;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--grad-green);color:white;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;">1</div>
+              <span style="font-size:.875rem;color:var(--text-body);">Consulta tu deuda con DNI + OTP</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:.75rem;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--grad-blue);color:white;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;">2</div>
+              <span style="font-size:.875rem;color:var(--text-body);">Negocia tu plan de pago</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:.75rem;">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--grad-green);color:white;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:800;flex-shrink:0;">3</div>
+              <span style="font-size:.875rem;color:var(--text-body);">Descarga tu Constancia + Infocorp</span>
+            </div>
+          </div>
+          <div style="margin-top:1.5rem;padding:.875rem;background:var(--green-xlight);border-radius:var(--radius);border:1px solid var(--green-light);">
+            <div style="font-size:.8rem;font-weight:700;color:var(--green-dark);">⏱ Tiempo promedio: 48 horas</div>
+            <div style="font-size:.75rem;color:var(--text-muted);margin-top:.2rem;">Desde el primer contacto hasta el levantamiento en Infocorp</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST STRIP ═══ -->
+<section style="background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.25rem 0;">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2rem;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;">Seguridad garantizada:</span>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <div><strong>AES-256</strong><span>Cifrado Bancario</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div><strong>OTP</strong><span>Autenticación SMS</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>Ley 29733</strong><span>Datos Protegidos</span></div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div><strong>INDECOPI</strong><span>Trato Digno</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CÓMO FUNCIONA ═══ -->
+<section class="section" style="background:var(--bg);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag green" data-aos="fade-up">Proceso Simple · 3 Pasos</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        ¿Cómo funciona el <span class="accent-green">Portal Deudor</span>?
+      </h2>
+      <p class="section-desc" style="margin:1rem auto 0;" data-aos="fade-up" data-aos-delay="200">
+        Diseñado para que cualquier ciudadano pueda resolver su situación crediticia
+        sin complicaciones, completamente en línea y con máxima seguridad.
+      </p>
+    </div>
+
+    <div class="grid-3">
+
+      <div class="step-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="step-num">1</div>
+        <div style="width:50px;height:50px;border-radius:13px;background:var(--green-xlight);display:flex;align-items:center;justify-content:center;color:var(--green-dark);margin:0 0 1.25rem;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3 style="color:var(--navy);font-weight:700;font-size:1.05rem;margin-bottom:.625rem;">Semáforo de Reinserción</h3>
+        <p style="color:var(--text-muted);font-size:.875rem;line-height:1.65;">
+          Ingresa con tu DNI y verifica tu identidad vía OTP por SMS. El sistema consulta
+          automáticamente tu deuda consolidada y te muestra tu estado crediticio en un
+          semáforo visual (Rojo · Amarillo · Verde).
+        </p>
+        <div style="margin-top:1.25rem;padding:.875rem;background:var(--blue-xlight);border-radius:var(--radius);font-size:.8rem;color:var(--blue);font-weight:600;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:.35rem;"><polyline points="20 6 9 17 4 12"/></svg>
+          Consulta gratuita · Sin compromiso
+        </div>
+      </div>
+
+      <div class="step-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="step-num">2</div>
+        <div style="width:50px;height:50px;border-radius:13px;background:var(--blue-xlight);display:flex;align-items:center;justify-content:center;color:var(--blue);margin:0 0 1.25rem;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3 style="color:var(--navy);font-weight:700;font-size:1.05rem;margin-bottom:.625rem;">Autonegociación de Pago</h3>
+        <p style="color:var(--text-muted);font-size:.875rem;line-height:1.65;">
+          El sistema te presenta planes de pago con fórmulas de condonación de intereses
+          autorizadas por la entidad acreedora. Propones, el sistema valida y genera
+          el acuerdo de pago instantáneamente con validez legal.
+        </p>
+        <div style="margin-top:1.25rem;padding:.875rem;background:var(--green-xlight);border-radius:var(--radius);font-size:.8rem;color:var(--green-dark);font-weight:600;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:.35rem;"><polyline points="20 6 9 17 4 12"/></svg>
+          Descuentos de intereses autorizados
+        </div>
+      </div>
+
+      <div class="step-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="step-num">3</div>
+        <div style="width:50px;height:50px;border-radius:13px;background:var(--green-xlight);display:flex;align-items:center;justify-content:center;color:var(--green-dark);margin:0 0 1.25rem;">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
+        </div>
+        <h3 style="color:var(--navy);font-weight:700;font-size:1.05rem;margin-bottom:.625rem;">Constancia + Infocorp</h3>
+        <p style="color:var(--text-muted);font-size:.875rem;line-height:1.65;">
+          Al cerrarse el pago, descarga tu Constancia de No Adeudo digital con firma
+          electrónica al instante. El sistema reporta automáticamente el levantamiento
+          de tu estatus ante Equifax/Infocorp.
+        </p>
+        <div style="margin-top:1.25rem;padding:.875rem;background:var(--green-xlight);border-radius:var(--radius);font-size:.8rem;color:var(--green-dark);font-weight:600;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline;vertical-align:middle;margin-right:.35rem;"><polyline points="20 6 9 17 4 12"/></svg>
+          Promedio 48 horas para el levantamiento
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SEMÁFORO VISUAL ═══ -->
+<section class="section" style="background:white;" data-aos="fade-up">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="grid-2-full">
+
+      <div>
+        <div class="section-tag green" style="margin-bottom:1rem;">Semáforo de Reinserción Crediticia</div>
+        <h2 class="section-title">
+          ¿Cuál es tu<br/><span class="accent-green">Estado Crediticio</span>?
+        </h2>
+        <p class="section-desc" style="max-width:100%;margin-top:1rem;">
+          Nuestro sistema consulta en tiempo real tu historial financiero y te muestra
+          de forma clara qué tienes pendiente y cómo resolverlo.
+        </p>
+        <div style="margin-top:2rem;">
+          <a href="#consulta" class="btn btn-green">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Consultar Ahora
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="semaforo-row" data-aos="fade-left" data-aos-delay="50">
+          <div class="sem-dot" style="background:#E53E3E;box-shadow:0 0 14px rgba(229,62,62,.4);"></div>
+          <div>
+            <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:.35rem;">ROJO · Deuda Activa con Mora</div>
+            <p style="color:var(--text-muted);font-size:.85rem;line-height:1.6;">Tienes deuda activa en cobranza. Puedes iniciar el proceso de negociación ahora mismo y acceder a planes de pago con descuentos de intereses autorizados. El primer paso es gratuito.</p>
+            <a href="#consulta" style="display:inline-flex;align-items:center;gap:.375rem;color:var(--blue);font-size:.82rem;font-weight:600;margin-top:.625rem;">Iniciar negociación →</a>
+          </div>
+        </div>
+
+        <div class="semaforo-row" data-aos="fade-left" data-aos-delay="120">
+          <div class="sem-dot" style="background:#FFC107;box-shadow:0 0 14px rgba(255,193,7,.4);"></div>
+          <div>
+            <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:.35rem;">AMARILLO · En Proceso de Conciliación</div>
+            <p style="color:var(--text-muted);font-size:.85rem;line-height:1.6;">Tienes un acuerdo de pago activo. Continúa con tu plan de pagos programado y el levantamiento en Infocorp se procesará automáticamente al completarlo.</p>
+            <a href="#consulta" style="display:inline-flex;align-items:center;gap:.375rem;color:var(--blue);font-size:.82rem;font-weight:600;margin-top:.625rem;">Ver mi acuerdo →</a>
+          </div>
+        </div>
+
+        <div class="semaforo-row" data-aos="fade-left" data-aos-delay="190">
+          <div class="sem-dot" style="background:var(--green);box-shadow:0 0 14px rgba(124,179,66,.4);"></div>
+          <div>
+            <div style="font-weight:700;color:var(--navy);font-size:.95rem;margin-bottom:.35rem;">VERDE · Rehabilitado · Sin Deuda</div>
+            <p style="color:var(--text-muted);font-size:.85rem;line-height:1.6;">¡Estás libre de deuda! Puedes descargar tu Constancia de No Adeudo digital con firma electrónica y acceder nuevamente al sistema crediticio formal del Perú.</p>
+            <a href="#consulta" style="display:inline-flex;align-items:center;gap:.375rem;color:var(--green-dark);font-size:.82rem;font-weight:600;margin-top:.625rem;">Descargar constancia →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ LO QUE INCLUYE ═══ -->
+<section class="section" style="background:linear-gradient(135deg,var(--blue-xlight),var(--green-xlight));">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag" data-aos="fade-up">¿Qué incluye el Portal Deudor?</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Todo lo que necesitas para <span class="accent-blue">Rehabilitarte</span>
+      </h2>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" data-aos="fade-up" data-aos-delay="50">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Consulta de Deuda Consolidada</h3>
+        <p>Ve en un solo lugar todas tus deudas activas con diferentes entidades financieras, con detalle de capital, intereses y fechas.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>Planes de Pago Flexibles</h3>
+        <p>Cuotas ajustadas a tu capacidad de pago, con condonación de intereses moratorios autorizados por la entidad acreedora.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="150">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3>Constancia Digital Inmediata</h3>
+        <p>Documento oficial con firma electrónica descargable al instante tras el pago. Válido ante bancos, empleadores y SUNAT.</p>
+      </div>
+      <div class="card green" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Alerta Automática a Infocorp</h3>
+        <p>El sistema reporta el levantamiento de tu estatus deudor directamente a Equifax/Infocorp sin que tengas que hacer nada.</p>
+      </div>
+      <div class="card green" data-aos="fade-up" data-aos-delay="250">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Autenticación OTP · Máxima Seguridad</h3>
+        <p>Acceso verificado con código OTP por SMS a tu celular. Solo tú puedes ver y gestionar tu información financiera.</p>
+      </div>
+      <div class="card green" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>Canal de Conciliación DCF</h3>
+        <p>Acceso directo al canal de conciliación virtual de la Defensoría del Cliente Financiero para mediación de disputas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FORMULARIO DE CONSULTA ═══ -->
+<section class="section" id="consulta" style="background:var(--navy);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="grid-2-full">
+
+      <!-- Info -->
+      <div>
+        <div class="section-tag" style="background:rgba(124,179,66,.15);border-color:rgba(124,179,66,.3);color:var(--green);margin-bottom:1rem;" data-aos="fade-right">Iniciar el Proceso</div>
+        <h2 style="color:white;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:1.25rem;" data-aos="fade-right" data-aos-delay="100">
+          Consulta tu Deuda<br/><span style="color:var(--green);">Gratis y sin Compromiso</span>
+        </h2>
+        <p style="color:rgba(255,255,255,.68);font-size:.975rem;line-height:1.75;margin-bottom:2rem;" data-aos="fade-right" data-aos-delay="200">
+          Ingresa tus datos para iniciar tu proceso de rehabilitación crediticia.
+          Un especialista revisará tu caso y te contactará con las mejores opciones disponibles.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:.875rem;" data-aos="fade-right" data-aos-delay="250">
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Consulta inicial completamente gratuita</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Respuesta en menos de 24 horas hábiles</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Tus datos protegidos con cifrado AES-256</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Trato digno conforme a normas INDECOPI</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div data-aos="fade-left" data-aos-delay="100">
+        <div style="background:white;border-radius:var(--radius-xl);padding:2.5rem;box-shadow:var(--shadow-xl);">
+          <h3 style="color:var(--navy);font-weight:800;font-size:1.25rem;margin-bottom:.5rem;">Consultar mi Deuda</h3>
+          <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:1.75rem;">Completa el formulario y te contactamos con tu plan de acción personalizado.</p>
+
+          <form id="debtForm" novalidate>
+            <div style="margin-bottom:1rem;">
+              <label class="form-label" for="db-nombre">Nombre completo *</label>
+              <input type="text" id="db-nombre" name="nombre" class="form-input" placeholder="Juan Carlos Pérez García" required data-validate="min" data-min="5" />
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div class="grid-2" style="margin-bottom:1rem;">
+              <div>
+                <label class="form-label" for="db-dni">DNI *</label>
+                <input type="text" id="db-dni" name="dni" class="form-input" placeholder="12345678" required maxlength="8" inputmode="numeric" />
+                <span class="form-error-msg"></span>
+              </div>
+              <div>
+                <label class="form-label" for="db-tel">Celular (OTP) *</label>
+                <input type="tel" id="db-tel" name="telefono" class="form-input" placeholder="+51 999 999 999" required data-validate="phone" />
+                <span class="form-error-msg"></span>
+              </div>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <label class="form-label" for="db-email">Correo electrónico *</label>
+              <input type="email" id="db-email" name="email" class="form-input" placeholder="juan@correo.com" required data-validate="email" />
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <label class="form-label" for="db-tipo">Situación actual</label>
+              <select id="db-tipo" name="situacion" class="form-input form-select">
+                <option value="">Selecciona tu situación...</option>
+                <option>Tengo deuda activa y quiero negociar</option>
+                <option>Me llegó una notificación de cobranza</option>
+                <option>Quiero salir de Infocorp / Equifax</option>
+                <option>Ya pagué pero sigo en Infocorp</option>
+                <option>Quiero conocer mis opciones</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+              <label class="form-label" for="db-msg">Comentario adicional (opcional)</label>
+              <textarea id="db-msg" name="mensaje" class="form-input form-textarea" placeholder="Cuéntanos brevemente tu situación..." rows="2"></textarea>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.5rem;">
+              <input type="checkbox" id="db-consent" name="consent" class="custom-check" required />
+              <label for="db-consent" style="font-size:.8rem;color:var(--text-muted);line-height:1.55;cursor:pointer;">
+                Autorizo el tratamiento de mis datos conforme a la
+                <a href="privacidad.html" style="color:var(--blue);font-weight:600;">Política de Privacidad</a>
+                y la Ley N° 29733.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-green" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              Consultar mi Deuda Gratis
+            </button>
+
+            <p style="text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1rem;">
+              🔒 Información cifrada con AES-256 · Solo tú puedes verla
+            </p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ DEUDOR ═══ -->
+<section class="section" style="background:white;" id="faq-deudor">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag green" data-aos="fade-up">Preguntas Frecuentes</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Todo lo que necesitas <span class="accent-green">saber</span>
+      </h2>
+    </div>
+
+    <div style="max-width:750px;margin:0 auto;">
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="50">
+        <div class="faq-q">¿Es legal y segura la negociación a través de Rekuperat?
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          Sí, completamente. Rekuperat opera bajo el marco regulatorio del sistema financiero peruano: Ley N° 29733 de Protección de Datos, Código del Consumidor (Ley N° 29571) e INDECOPI. Toda transacción está cifrada con AES-256 y autenticada con OTP. Los acuerdos tienen validez legal con firma digital.
+        </div></div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-q">¿Cuánto cuesta consultar mi deuda?
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          La consulta inicial es completamente gratuita. Solo pagas si llegas a un acuerdo de pago con la entidad acreedora, y la comisión de la plataforma ya está incluida en el plan de pago que se te presenta.
+        </div></div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="150">
+        <div class="faq-q">¿Cuánto tiempo tarda el levantamiento en Infocorp?
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          En promedio, entre 15 y 30 días hábiles desde que se procesa el pago. Rekuperat envía el reporte automáticamente a Equifax/Infocorp al cierre de tu acuerdo. Recibirás confirmación por SMS y correo electrónico cuando el levantamiento sea efectivo.
+        </div></div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="faq-q">¿Mis datos personales están seguros?
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          Sí. Cumplimos con la Ley N° 29733. Tus datos son cifrados con AES-256, almacenados en servidores seguros bajo ISO 27001 y nunca compartidos con terceros sin tu consentimiento expreso. Solo la entidad acreedora con quien negocies tiene acceso a los datos mínimos necesarios.
+        </div></div>
+      </div>
+      <div class="faq-item" data-aos="fade-up" data-aos-delay="250">
+        <div class="faq-q">¿Puedo negociar si tengo varias deudas con diferentes entidades?
+          <span class="faq-toggle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></span>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">
+          Sí. El Portal Deudor consolida todas tus deudas activas en un solo panel. Puedes iniciar procesos de negociación con cada entidad por separado o priorizarlos según tu capacidad de pago. Un especialista puede asesorarte sobre la mejor estrategia.
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL ═══ -->
+<section style="background:linear-gradient(135deg,var(--green-dark),var(--green));padding:4rem 0;text-align:center;">
+  <div class="container">
+    <h2 style="color:white;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;margin-bottom:1rem;" data-aos="fade-up">¿Listo para empezar de nuevo?</h2>
+    <p style="color:rgba(255,255,255,.8);font-size:1.05rem;max-width:520px;margin:0 auto 2rem;" data-aos="fade-up" data-aos-delay="100">
+      Miles de personas ya rehabilitaron su historial con Rekuperat. Tu turno es ahora.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;" data-aos="fade-up" data-aos-delay="200">
+      <a href="#consulta" class="btn" style="background:white;color:var(--green-dark);font-size:1rem;padding:.875rem 2.25rem;border-radius:var(--radius-lg);font-weight:700;">
+        Consultar mi Deuda Ahora
+      </a>
+      <a href="contacto.html" class="btn btn-ghost-white" style="font-size:1rem;padding:.875rem 2.25rem;border-radius:var(--radius-lg);">
+        Hablar con un Especialista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;" class="grid-footer">
+        <div>
+          <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" style="height:52px;border-radius:8px;background:white;padding:5px;margin-bottom:1.25rem;" />
+          <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.75;max-width:280px;margin-bottom:1.5rem;">
+            Infraestructura RegTech y Plataforma Fintech para la Cobranza y Reinserción en el Sistema Financiero Regulado del Perú.
+          </p>
+          <div style="display:flex;gap:.75rem;">
+            <a href="#" class="social-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="mailto:info@recuperat.com" class="social-btn" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Portal Deudor</h4>
+          <a href="#" class="footer-link">Consultar mi Deuda</a>
+          <a href="#" class="footer-link">Planes de Pago</a>
+          <a href="#" class="footer-link">Constancia No Adeudo</a>
+          <a href="contacto.html" class="footer-link">Hablar con Especialista</a>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal y Soporte</h4>
+          <a href="privacidad.html" class="footer-link">Política de Privacidad</a>
+          <a href="terminos.html"   class="footer-link">Términos de Servicio</a>
+          <a href="compliance.html" class="footer-link">Compliance SBS</a>
+          <a href="index.html"      class="footer-link">Inicio · Rekuperat</a>
+          <a href="portal-acreedor.html" class="footer-link">Portal Acreedor</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p style="color:rgba(255,255,255,.38);font-size:.8rem;">© 2026 <strong style="color:rgba(255,255,255,.6);">RECUPERAT S.A.C.</strong> · info@recuperat.com · Lima y Chiclayo, Perú</p>
+    <span style="display:flex;align-items:center;gap:.4rem;color:var(--green);font-size:.75rem;font-weight:600;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></span>
+      Plataforma Activa 24/7
+    </span>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" aria-label="Volver al inicio">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- Responsive overrides -->
+<style>
+@media (max-width:900px) {
+  #desktopNav { display:none!important; }
+  #menuBtn    { display:flex!important; }
+  #ctaNavBtn  { display:none!important; }
+  .grid-2-full { grid-template-columns:1fr!important; }
+  .grid-footer  { grid-template-columns:1fr 1fr!important; }
+}
+@media (max-width:600px) {
+  .grid-footer { grid-template-columns:1fr!important; }
+}
+</style>
+
+<!-- Scripts — animations.js PRIMERO para que AOS.init() funcione -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/forms.js"      defer></script>
+<script src="assets/js/security.js"   defer></script>
+<script src="assets/js/seo.js"        defer></script>
+<script src="assets/js/app.js"        defer></script>
+
+</body>
+</html>

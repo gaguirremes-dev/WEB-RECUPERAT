@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es-PE">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Acreedor · Cobranza Inteligente B2B | REKUPERAT Fintech</title>
+  <meta name="description" content="Plataforma de cobranza omnicanal con IA para bancos, financieras y cajas municipales. Dashboard analytics en tiempo real, trazabilidad SBS y gestión de carteras vencidas en Perú." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rekuperat.com/portal-acreedor" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <style>
+    /* Checkbox custom — visible en todos los tamaños */
+    .custom-check {
+      width: 18px; height: 18px;
+      border-radius: 4px; border: 2px solid var(--silver-mid);
+      appearance: none; -webkit-appearance: none;
+      cursor: pointer; transition: var(--transition);
+      background-size: 12px; background-position: center; background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+    .custom-check:checked {
+      background-color: var(--blue); border-color: var(--blue);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+
+    /* Grids responsive */
+    .grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; }
+    .grid-hero { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; }
+
+    @media (max-width:960px) {
+      .grid-3    { grid-template-columns:repeat(2,1fr); }
+      .grid-hero { grid-template-columns:1fr; }
+      .hero-mockup-wrap { display:none; }
+      #desktopNav { display:none!important; }
+      #menuBtn    { display:flex!important; }
+      #ctaNavBtn  { display:none!important; }
+      .grid-2-form { grid-template-columns:1fr!important; }
+      .grid-footer  { grid-template-columns:1fr 1fr!important; }
+    }
+    @media (max-width:640px) {
+      .grid-3    { grid-template-columns:1fr; }
+      .grid-2    { grid-template-columns:1fr; }
+      .grid-footer { grid-template-columns:1fr!important; }
+    }
+
+    /* Hero entrance */
+    @keyframes slideUp {
+      from { opacity:0; transform:translateY(28px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+    .au1 { animation:slideUp .7s ease forwards; }
+    .au2 { animation:slideUp .7s .15s ease forwards; opacity:0; }
+    .au3 { animation:slideUp .7s .3s ease forwards; opacity:0; }
+    .au4 { animation:slideUp .7s .45s ease forwards; opacity:0; }
+
+    /* Stat cards in hero */
+    .hero-stat {
+      background:rgba(255,255,255,.1);
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:var(--radius-lg);
+      padding:1.25rem 1.5rem;
+      backdrop-filter:blur(12px);
+    }
+    .hero-stat-v { font-size:1.75rem; font-weight:900; color:#fff; letter-spacing:-.02em; }
+    .hero-stat-l { font-size:.75rem; color:rgba(255,255,255,.62); margin-top:.2rem; }
+    .hero-stat-u { font-size:.75rem; color:var(--green); font-weight:600; margin-top:.2rem; }
+
+    /* Process steps */
+    .process-step {
+      display:flex; align-items:flex-start; gap:1.25rem;
+      padding:1.5rem; background:white;
+      border:1px solid var(--border); border-radius:var(--radius-lg);
+      transition:var(--transition);
+    }
+    .process-step:hover { box-shadow:var(--shadow-card); border-color:var(--blue-light); transform:translateX(4px); }
+    .ps-num {
+      width:36px; height:36px; border-radius:50%; flex-shrink:0;
+      background:var(--grad-blue); color:white;
+      font-weight:800; font-size:.85rem;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 2px 10px rgba(21,101,192,.3);
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ PAGE LOADER ═══ -->
+<div class="page-loader" id="pageLoader" aria-hidden="true">
+  <div class="loader-logo-wrap">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" class="loader-logo" />
+  </div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+  <div class="loader-tagline">Cargando plataforma</div>
+</div>
+
+<!-- ═══ MOBILE OVERLAY + MENU ═══ -->
+<div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil" role="navigation">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
+    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:42px;" />
+    <button id="menuClose" aria-label="Cerrar menú" style="background:none;border:none;cursor:pointer;color:var(--text-muted);">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <a href="index.html"           class="mobile-link">Inicio</a>
+  <a href="portal-deudor.html"   class="mobile-link">Portal Deudor</a>
+  <a href="portal-acreedor.html" class="mobile-link" style="color:var(--blue);font-weight:700;">Portal Acreedor</a>
+  <a href="compliance.html"      class="mobile-link">Compliance</a>
+  <a href="contacto.html"        class="mobile-link">Contacto</a>
+  <div style="margin-top:2rem;display:flex;flex-direction:column;gap:.75rem;">
+    <a href="#demo-form"           class="btn btn-primary" style="justify-content:center;">Solicitar Demo B2B</a>
+    <a href="portal-deudor.html"   class="btn btn-outline"  style="justify-content:center;">Portal Deudor</a>
+  </div>
+</nav>
+
+<!-- ═══ NAVBAR ═══ -->
+<header class="navbar" role="banner">
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;">
+    <a href="index.html" class="nav-logo" aria-label="Rekuperat - Inicio">
+      <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" />
+    </a>
+    <nav style="display:flex;align-items:center;gap:1.75rem;" id="desktopNav" aria-label="Navegación">
+      <a href="index.html"           class="nav-link">Inicio</a>
+      <a href="compliance.html"      class="nav-link">Compliance</a>
+      <a href="contacto.html"        class="nav-link">Contacto</a>
+      <a href="portal-deudor.html"   class="nav-link">Portal Deudor</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:.75rem;">
+      <a href="#demo-form" class="btn btn-primary" id="ctaNavBtn">
+        Solicitar Demo B2B
+      </a>
+      <button id="menuBtn" aria-label="Abrir menú" style="background:none;border:none;cursor:pointer;color:var(--navy);display:none;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section style="background:linear-gradient(135deg,#0D1B4B 0%,#1B2D78 38%,#1565C0 68%,#7CB342 100%);min-height:60vh;display:flex;align-items:center;padding-top:100px;padding-bottom:3rem;position:relative;overflow:hidden;" aria-labelledby="pa-heading">
+  <!-- Grid overlay -->
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;" aria-hidden="true"></div>
+  <!-- Glow -->
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 80% 30%,rgba(124,179,66,.18),transparent),radial-gradient(ellipse 50% 60% at 20% 70%,rgba(21,101,192,.25),transparent);pointer-events:none;" aria-hidden="true"></div>
+
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="grid-hero">
+
+      <!-- Text -->
+      <div>
+        <div class="hero-badge au1">
+          <span class="dot" style="background:var(--green);width:7px;height:7px;border-radius:50%;animation:pulse 2s infinite;box-shadow:0 0 8px var(--green);"></span>
+          Portal Acreedor · B2B Enterprise · Fintech
+        </div>
+
+        <h1 id="pa-heading" style="font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:900;color:white;line-height:1.12;letter-spacing:-.02em;margin:1rem 0;" class="au2">
+          Recupera el <span style="background:linear-gradient(135deg,#AED581,#7CB342);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Máximo Valor</span><br/>de tu Cartera Vencida
+        </h1>
+
+        <p style="color:rgba(255,255,255,.72);font-size:1.05rem;line-height:1.75;max-width:540px;margin-bottom:2rem;" class="au3">
+          IA predictiva, cobranza omnicanal y analytics en tiempo real para bancos,
+          financieras y cajas municipales. Blindaje regulatorio SBS, UIF e INDECOPI incluido
+          en cada módulo de la plataforma.
+        </p>
+
+        <div style="display:flex;flex-wrap:wrap;gap:1rem;" class="au4">
+          <a href="#demo-form" class="btn btn-green btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+            Solicitar Demo B2B Gratis
+          </a>
+          <a href="compliance.html" class="btn btn-ghost-white">
+            Ver Marco de Compliance
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;" class="au4">
+          <div class="hero-stat">
+            <div class="hero-stat-v">94<span style="font-size:1.1rem">%</span></div>
+            <div class="hero-stat-l">Tasa de Recupero</div>
+            <div class="hero-stat-u">▲ Promedio plataforma</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-v">S/120M</div>
+            <div class="hero-stat-l">Cartera Gestionada</div>
+            <div class="hero-stat-u">▲ Activo 2025</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-v">15d</div>
+            <div class="hero-stat-l">Implementación</div>
+            <div class="hero-stat-u">▲ Onboarding rápido</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard mockup -->
+      <div class="hero-mockup-wrap au3">
+        <div class="dashboard" style="border-radius:20px;overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.3);">
+          <div class="dash-bar">
+            <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
+            <span style="margin-left:.875rem;font-size:.7rem;color:rgba(255,255,255,.4);">Portal Acreedor · Dashboard de Riesgo</span>
+          </div>
+          <div class="dash-body">
+            <div class="dash-stats" style="grid-template-columns:repeat(3,1fr);">
+              <div class="dash-stat"><div class="dash-v">S/ 28.4M</div><div class="dash-l">Recuperado</div><div class="dash-c">▲ +18.7%</div></div>
+              <div class="dash-stat"><div class="dash-v">94.8%</div><div class="dash-l">Tasa Recupero</div><div class="dash-c">▲ +12.3%</div></div>
+              <div class="dash-stat"><div class="dash-v">3,847</div><div class="dash-l">Casos Activos</div><div class="dash-c">▲ +231</div></div>
+            </div>
+            <div class="dash-chart" style="margin-top:1rem;">
+              <div class="dash-chart-title">Recuperación Mensual 2025</div>
+              <div class="bars" id="acreedorBars">
+                <div class="bar" style="height:38%"></div><div class="bar" style="height:52%"></div>
+                <div class="bar hi" style="height:72%"></div><div class="bar" style="height:58%"></div>
+                <div class="bar hi" style="height:88%"></div><div class="bar" style="height:62%"></div>
+                <div class="bar hi" style="height:95%"></div><div class="bar" style="height:78%"></div>
+              </div>
+            </div>
+            <div class="dash-table" style="margin-top:1rem;">
+              <div class="dt-head"><div class="dt-cell">Entidad</div><div class="dt-cell">Cartera</div><div class="dt-cell">Estado</div></div>
+              <div class="dt-row"><div class="dt-cell">BCP Perú</div><div class="dt-cell">S/48.2M</div><div class="dt-cell"><span class="dt-pill">Activo</span></div></div>
+              <div class="dt-row"><div class="dt-cell">Interbank</div><div class="dt-cell">S/31.8M</div><div class="dt-cell"><span class="dt-pill">Activo</span></div></div>
+              <div class="dt-row"><div class="dt-cell">Caja Piura</div><div class="dt-cell">S/12.4M</div><div class="dt-cell"><span class="dt-pill warn">En proceso</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TRUST STRIP ═══ -->
+<section style="background:white;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:1.25rem 0;">
+  <div class="container">
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:2rem;">
+      <span style="font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em;">Compliance Enterprise:</span>
+      <div class="trust-item"><div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div><strong>SBS</strong><span>Resolución 2757-2023</span></div></div>
+      <div class="trust-item"><div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><strong>UIF · Perú</strong><span>SPLAFT · KYC/KYB</span></div></div>
+      <div class="trust-item"><div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><div><strong>INDECOPI</strong><span>Ley N° 29571</span></div></div>
+      <div class="trust-item"><div class="trust-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><strong>AES-256</strong><span>ISO 27001</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAPACIDADES ENTERPRISE ═══ -->
+<section class="section" style="background:var(--bg);" id="capacidades">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag" data-aos="fade-up">Capacidades de la Plataforma B2B</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Todo lo que tu equipo de riesgo <span class="accent-blue">necesita</span>
+      </h2>
+      <p class="section-desc" style="margin:1rem auto 0;" data-aos="fade-up" data-aos-delay="200">
+        Diseñado para directores de riesgo, comités de auditoría y equipos de cobranza
+        de entidades financieras reguladas por la SBS del Perú.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div class="card" data-aos="fade-up" data-aos-delay="50">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>IA de Cobranza Predictiva</h3>
+        <p>Modelos de machine learning entrenados con datos del mercado financiero peruano. Predice la probabilidad de pago, segmenta la cartera y prioriza automáticamente los casos de mayor recupero.</p>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--blue);font-weight:600;">Tasa de acierto: 91.4%</div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        </div>
+        <h3>Dashboard de Riesgo en Tiempo Real</h3>
+        <p>Panel transaccional donde tus directores auditan curvas de efectividad de recupero, flujos de tesorería, alertas de compliance y métricas de cartera sin fricción.</p>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--blue);font-weight:600;">Actualización cada 60 segundos</div>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="150">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3>Cobranza Omnicanal</h3>
+        <p>SMS, Email, WhatsApp, llamadas y notificaciones push con restricciones horarias automáticas conforme a INDECOPI. Cero riesgo de multas regulatorias. Motor de comunicación predictiva.</p>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--blue);font-weight:600;">Lun-Vie 8am–8pm automático</div>
+      </div>
+
+      <div class="card green" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Trazabilidad Total · Auditoría SBS</h3>
+        <p>Registro inmutable de cada interacción, acuerdo y pago. Disponible para auditorías externas de la SBS. Cumplimiento automático con Resolución N° 2757-2023 y Ley N° 26702.</p>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--green-dark);font-weight:600;">Logs inmutables · Blockchain-ready</div>
+      </div>
+
+      <div class="card green" data-aos="fade-up" data-aos-delay="250">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <h3>KYC · KYB Automatizado (UIF)</h3>
+        <p>Filtros de debida diligencia en pasarelas de pago. Detección algorítmica de alertas SPLAFT. Reporte automático a UIF-Perú de operaciones sospechosas según normativa antilavado.</p>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--green-dark);font-weight:600;">Integración SPLAFT nativa</div>
+      </div>
+
+      <div class="card green" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Integración API · Core Bancario</h3>
+        <p>Conexión REST API con Temenos, Oracle FLEXCUBE, y sistemas core bancario locales. Sandbox desde el día 1. Implementación completa en 10 a 15 días hábiles con soporte dedicado.</p>
+        <div style="margin-top:1rem;font-size:.78rem;color:var(--green-dark);font-weight:600;">REST API · Webhooks · SDK disponible</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CÓMO FUNCIONA PARA BANCOS ═══ -->
+<section class="section" style="background:white;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="grid-2-full">
+
+      <div>
+        <div class="section-tag" style="margin-bottom:1rem;" data-aos="fade-right">Proceso de Implementación</div>
+        <h2 class="section-title" data-aos="fade-right" data-aos-delay="100">
+          ¿Cómo funciona para tu<br/><span class="accent-blue">Entidad Financiera</span>?
+        </h2>
+        <p class="section-desc" style="max-width:100%;margin-top:1rem;" data-aos="fade-right" data-aos-delay="200">
+          Onboarding diseñado para minimizar la fricción con tus equipos de TI y Cumplimiento.
+          Desde la firma del contrato hasta el primer recupero en menos de 15 días.
+        </p>
+
+        <div style="margin-top:2rem;" data-aos="fade-right" data-aos-delay="250">
+          <a href="#demo-form" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+            Solicitar Demo · Ver el Proceso
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="process-step" data-aos="fade-left" data-aos-delay="50">
+            <div class="ps-num">1</div>
+            <div>
+              <div style="font-weight:700;color:var(--navy);margin-bottom:.35rem;">Diagnóstico y Demo Personalizada</div>
+              <p style="font-size:.875rem;color:var(--text-muted);line-height:1.6;">Análisis de tu cartera actual sin costo. Te mostramos el potencial de recupero estimado y cómo se integra con tus sistemas existentes. Duración: 60 minutos.</p>
+            </div>
+          </div>
+
+          <div class="process-step" data-aos="fade-left" data-aos-delay="120">
+            <div class="ps-num">2</div>
+            <div>
+              <div style="font-weight:700;color:var(--navy);margin-bottom:.35rem;">Integración API y Migración</div>
+              <p style="font-size:.875rem;color:var(--text-muted);line-height:1.6;">Conexión con tu core bancario vía REST API. Migración segura de tu cartera. Sandbox de pruebas disponible desde el día 1 para que tu equipo valide antes del lanzamiento.</p>
+            </div>
+          </div>
+
+          <div class="process-step" data-aos="fade-left" data-aos-delay="190">
+            <div class="ps-num">3</div>
+            <div>
+              <div style="font-weight:700;color:var(--navy);margin-bottom:.35rem;">Capacitación y Lanzamiento</div>
+              <p style="font-size:.875rem;color:var(--text-muted);line-height:1.6;">Capacitación del equipo de riesgo en el dashboard. Configuración de KPIs y alertas personalizadas. Go-live con soporte técnico dedicado durante los primeros 60 días.</p>
+            </div>
+          </div>
+
+          <div class="process-step" data-aos="fade-left" data-aos-delay="260">
+            <div class="ps-num">4</div>
+            <div>
+              <div style="font-weight:700;color:var(--navy);margin-bottom:.35rem;">Optimización Continua con IA</div>
+              <p style="font-size:.875rem;color:var(--text-muted);line-height:1.6;">Los modelos de IA se entrenan con los datos de tu cartera para mejorar continuamente la predicción de pagos y la segmentación. Reportes mensuales de performance a gerencia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMPLIANCE B2B ═══ -->
+<section class="section" style="background:linear-gradient(135deg,var(--blue-xlight),var(--green-xlight));">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="section-tag green" data-aos="fade-up">Blindaje Regulatorio Incluido</div>
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
+        Cumplimiento <span class="accent-green">Automático</span> con todos los Reguladores
+      </h2>
+      <p class="section-desc" style="margin:1rem auto 0;" data-aos="fade-up" data-aos-delay="200">
+        No tienes que preocuparte por el compliance. La plataforma lo gestiona automáticamente.
+      </p>
+    </div>
+
+    <div class="grid-3">
+      <div style="background:white;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);" data-aos="fade-up" data-aos-delay="50">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="background:var(--grad-blue);border-radius:8px;padding:.5rem .875rem;color:white;font-weight:800;font-size:.82rem;">SBS</div>
+          <span style="font-size:.8rem;color:var(--text-muted);">Res. N° 2757-2023</span>
+        </div>
+        <p style="font-size:.875rem;color:var(--text-body);line-height:1.65;">Gestión de conducta de mercado, tercerizaciones críticas y secreto bancario. Auditorías de token automáticas en cada acceso B2B.</p>
+      </div>
+
+      <div style="background:white;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);" data-aos="fade-up" data-aos-delay="100">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="background:var(--grad-green);border-radius:8px;padding:.5rem .875rem;color:white;font-weight:800;font-size:.82rem;">UIF</div>
+          <span style="font-size:.8rem;color:var(--text-muted);">SPLAFT Antilavado</span>
+        </div>
+        <p style="font-size:.875rem;color:var(--text-body);line-height:1.65;">Filtros KYB y KYC automatizados en todas las transacciones. Detección algorítmica y reporte automático a UIF de operaciones sospechosas.</p>
+      </div>
+
+      <div style="background:white;border-radius:var(--radius-lg);padding:1.75rem;border:1px solid var(--border);box-shadow:var(--shadow-sm);" data-aos="fade-up" data-aos-delay="150">
+        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+          <div style="background:linear-gradient(135deg,#E65100,#FF7043);border-radius:8px;padding:.5rem .875rem;color:white;font-weight:800;font-size:.78rem;">INDECOPI</div>
+          <span style="font-size:.8rem;color:var(--text-muted);">Ley N° 29571</span>
+        </div>
+        <p style="font-size:.875rem;color:var(--text-body);line-height:1.65;">Bloqueo técnico en servidor para contacto solo en horarios hábiles (Lun-Vie, 8am-8pm). No puede ser desactivado por el operador.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:2.5rem;" data-aos="fade-up">
+      <a href="compliance.html" class="btn btn-outline">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ver Documentación Completa de Compliance
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEMO FORM ═══ -->
+<section class="section" id="demo-form" style="background:var(--navy);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="grid-2-full">
+
+      <!-- Info -->
+      <div>
+        <div class="section-tag" style="background:rgba(124,179,66,.15);border-color:rgba(124,179,66,.3);color:var(--green);margin-bottom:1rem;" data-aos="fade-right">Demo Personalizada · Gratuita</div>
+        <h2 style="color:white;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:1.25rem;" data-aos="fade-right" data-aos-delay="100">
+          ¿Listo para Optimizar<br/><span style="color:var(--green);">tu Recupero de Cartera</span>?
+        </h2>
+        <p style="color:rgba(255,255,255,.65);font-size:.975rem;line-height:1.75;margin-bottom:2rem;" data-aos="fade-right" data-aos-delay="200">
+          Un especialista analiza tu cartera sin costo y te muestra el potencial de recupero estimado en 24 horas. Sin compromiso de contratación.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:.875rem;" data-aos="fade-right" data-aos-delay="250">
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Análisis de cartera sin costo ni compromiso</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Demo en vivo adaptada a tu tipo de cartera</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Respuesta en menos de 24 horas hábiles</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <span style="color:rgba(255,255,255,.85);font-size:.875rem;">NDA disponible para entidades reguladas</span>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);" data-aos="fade-right" data-aos-delay="300">
+          <div style="font-weight:700;color:white;font-size:.9rem;margin-bottom:.5rem;">📞 Contacto Directo</div>
+          <a href="mailto:info@recuperat.com" style="color:var(--green);font-size:.875rem;font-weight:600;">info@recuperat.com</a>
+          <div style="color:rgba(255,255,255,.45);font-size:.78rem;margin-top:.35rem;">Sede Lima · Av. República de Chile 324</div>
+          <div style="color:rgba(255,255,255,.45);font-size:.78rem;">Sede Chiclayo · Lapoint 1221</div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div data-aos="fade-left" data-aos-delay="100">
+        <div style="background:white;border-radius:var(--radius-xl);padding:2.5rem;box-shadow:var(--shadow-xl);">
+          <h3 style="color:var(--navy);font-weight:800;font-size:1.2rem;margin-bottom:.5rem;">Solicitar Demo B2B</h3>
+          <p style="color:var(--text-muted);font-size:.85rem;margin-bottom:1.75rem;">Completa el formulario y un especialista te contacta en menos de 24 horas.</p>
+
+          <form id="demoForm" novalidate>
+            <div class="grid-2" style="margin-bottom:1rem;">
+              <div>
+                <label class="form-label" for="dm-nombre">Nombre completo *</label>
+                <input type="text" id="dm-nombre" name="nombre" class="form-input" placeholder="Carlos Ramírez" required data-validate="min" />
+                <span class="form-error-msg"></span>
+              </div>
+              <div>
+                <label class="form-label" for="dm-cargo">Cargo / Posición *</label>
+                <input type="text" id="dm-cargo" name="cargo" class="form-input" placeholder="Director de Riesgo" required data-validate="min" />
+                <span class="form-error-msg"></span>
+              </div>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <label class="form-label" for="dm-entidad">Entidad Financiera *</label>
+              <input type="text" id="dm-entidad" name="entidad" class="form-input" placeholder="Banco XYZ SAC / Caja Municipal Nombre" required data-validate="min" />
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div class="grid-2" style="margin-bottom:1rem;">
+              <div>
+                <label class="form-label" for="dm-email">Correo corporativo *</label>
+                <input type="email" id="dm-email" name="email" class="form-input" placeholder="carlos@banco.com.pe" required data-validate="email" />
+                <span class="form-error-msg"></span>
+              </div>
+              <div>
+                <label class="form-label" for="dm-tel">Teléfono / WhatsApp</label>
+                <input type="tel" id="dm-tel" name="telefono" class="form-input" placeholder="+51 999 999 999" data-validate="phone" />
+                <span class="form-error-msg"></span>
+              </div>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <label class="form-label" for="dm-tipo">Tipo de entidad *</label>
+              <select id="dm-tipo" name="tipo_entidad" class="form-input form-select" required>
+                <option value="">Selecciona el tipo...</option>
+                <option>Banco Comercial</option>
+                <option>Financiera</option>
+                <option>Caja Municipal</option>
+                <option>Caja Rural</option>
+                <option>Cooperativa de Ahorro</option>
+                <option>Fondo de Inversión</option>
+                <option>Empresa de Factoring</option>
+                <option>Otro</option>
+              </select>
+              <span class="form-error-msg"></span>
+            </div>
+
+            <div style="margin-bottom:1rem;">
+              <label class="form-label" for="dm-cartera">Monto estimado de cartera vencida</label>
+              <select id="dm-cartera" name="cartera" class="form-input form-select">
+                <option value="">Selecciona rango...</option>
+                <option>Menos de S/ 1M</option>
+                <option>S/ 1M – S/ 10M</option>
+                <option>S/ 10M – S/ 50M</option>
+                <option>S/ 50M – S/ 200M</option>
+                <option>Más de S/ 200M</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+              <label class="form-label" for="dm-msg">Principal reto de cobranza</label>
+              <textarea id="dm-msg" name="mensaje" class="form-input form-textarea" placeholder="Describe brevemente tu situación actual y qué resultados buscas..." rows="3"></textarea>
+            </div>
+
+            <div style="display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1.5rem;">
+              <input type="checkbox" id="dm-consent" name="consent" class="custom-check" required />
+              <label for="dm-consent" style="font-size:.8rem;color:var(--text-muted);line-height:1.55;cursor:pointer;">
+                Acepto los <a href="terminos.html" style="color:var(--blue);font-weight:600;">Términos de Servicio</a> y la
+                <a href="privacidad.html" style="color:var(--blue);font-weight:600;">Política de Privacidad</a> de RECUPERAT S.A.C.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;font-size:1rem;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg>
+              Solicitar Demo B2B Gratuita
+            </button>
+
+            <p style="text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:1rem;">
+              🔒 Información confidencial · NDA disponible · AES-256
+            </p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;" class="grid-footer">
+        <div>
+          <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" style="height:52px;border-radius:8px;background:white;padding:5px;margin-bottom:1.25rem;" />
+          <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.75;max-width:280px;margin-bottom:1.5rem;">
+            Infraestructura RegTech y Plataforma Fintech para la Cobranza y Reinserción en el Sistema Financiero Regulado del Perú.
+          </p>
+          <div style="display:flex;gap:.75rem;">
+            <a href="#" class="social-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="mailto:info@recuperat.com" class="social-btn" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Portal Acreedor</h4>
+          <a href="#capacidades"  class="footer-link">Capacidades Enterprise</a>
+          <a href="#demo-form"    class="footer-link">Solicitar Demo B2B</a>
+          <a href="compliance.html" class="footer-link">Compliance Regulatorio</a>
+          <a href="contacto.html"   class="footer-link">Contacto Directo</a>
+        </div>
+        <div>
+          <h4 class="footer-col-title">Legal y Empresa</h4>
+          <a href="privacidad.html"     class="footer-link">Política de Privacidad</a>
+          <a href="terminos.html"       class="footer-link">Términos de Servicio</a>
+          <a href="portal-deudor.html"  class="footer-link">Portal Deudor</a>
+          <a href="index.html"          class="footer-link">Inicio · Rekuperat</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p style="color:rgba(255,255,255,.38);font-size:.8rem;">© 2026 <strong style="color:rgba(255,255,255,.6);">RECUPERAT S.A.C.</strong> · info@recuperat.com · Lima y Chiclayo, Perú</p>
+    <span style="display:flex;align-items:center;gap:.4rem;color:var(--green);font-size:.75rem;font-weight:600;">
+      <span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></span>
+      Plataforma Activa 24/7
+    </span>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top" id="scrollTop" aria-label="Volver al inicio">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m18 15-6-6-6 6"/></svg>
+</button>
+
+<!-- Responsive overrides -->
+<style>
+.grid-2-full { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+@media (max-width:960px) {
+  .grid-2-full { grid-template-columns:1fr!important; }
+  .grid-footer  { grid-template-columns:1fr 1fr!important; }
+}
+@media (max-width:600px) {
+  .grid-footer { grid-template-columns:1fr!important; }
+  .hero-stat   { padding:.875rem 1rem; }
+}
+</style>
+
+<!-- Scripts — animations.js PRIMERO para AOS.init() -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="assets/js/animations.js" defer></script>
+<script src="assets/js/forms.js"      defer></script>
+<script src="assets/js/security.js"   defer></script>
+<script src="assets/js/seo.js"        defer></script>
+<script src="assets/js/app.js"        defer></script>
+
+</body>
+</html>
