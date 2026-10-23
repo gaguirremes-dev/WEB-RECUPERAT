@@ -124,7 +124,7 @@ function showToast(msg, type = 'success') {
   const toast = document.createElement('div');
   toast.className = `toast ${type === 'error' ? 'error' : ''}`;
   toast.innerHTML = `
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${type === 'error' ? '#E53E3E' : '#7CB342'}" stroke-width="2.5">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="${type === 'error' ? '#E53E3E' : '#6EBB73'}" stroke-width="2.5">
       ${type === 'error'
         ? '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'
         : '<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'}
@@ -173,7 +173,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 function createParticles() {
   const container = document.querySelector('.hero-particles');
   if (!container) return;
-  const colors = ['rgba(255,255,255,.12)', 'rgba(124,179,66,.15)', 'rgba(21,101,192,.18)'];
+  const colors = ['rgba(255,255,255,.12)', 'rgba(110,187,115,.15)', 'rgba(42,110,57,.18)'];
   for (let i = 0; i < 18; i++) {
     const p = document.createElement('div');
     const size = Math.random() * 6 + 3;

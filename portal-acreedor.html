@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/jpeg" href="FAVICON - REKUPERAT.jpg" />
-  <link rel="shortcut icon" type="image/jpeg" href="FAVICON - REKUPERAT.jpg" />
-  <link rel="apple-touch-icon" href="FAVICON - REKUPERAT.jpg" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
   <title>Portal Acreedor · Cobranza Inteligente B2B | REKUPERAT Fintech</title>
   <meta name="description" content="Plataforma de cobranza omnicanal con IA para bancos, financieras y cajas municipales. Dashboard analytics en tiempo real, trazabilidad SBS y gestión de carteras vencidas en Perú." />
   <meta name="robots" content="index, follow" />
@@ -85,7 +85,7 @@
       background:var(--grad-blue); color:white;
       font-weight:800; font-size:.85rem;
       display:flex; align-items:center; justify-content:center;
-      box-shadow:0 2px 10px rgba(21,101,192,.3);
+      box-shadow:0 2px 10px rgba(42,110,57,.3);
     }
   </style>
 </head>
@@ -94,7 +94,7 @@
 <!-- ═══ PAGE LOADER ═══ -->
 <div class="page-loader" id="pageLoader" aria-hidden="true">
   <div class="loader-logo-wrap">
-    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" class="loader-logo" />
+    <img src="assets/img/logo-rekuperat.png" alt="Rekuperat" class="loader-logo" />
   </div>
   <div class="loader-dots"><span></span><span></span><span></span></div>
   <div class="loader-bar"><div class="loader-fill"></div></div>
@@ -106,7 +106,7 @@
 
 <nav class="mobile-menu" id="mobileMenu" aria-label="Menú móvil" role="navigation">
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;">
-    <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat" style="height:42px;" />
+    <img src="assets/img/logo-rekuperat.png" alt="Rekuperat" style="height:42px;" />
     <button id="menuClose" aria-label="Cerrar menú" style="background:none;border:none;cursor:pointer;color:var(--text-muted);">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
     </button>
@@ -127,7 +127,7 @@
 <header class="navbar" role="banner">
   <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:1.5rem;">
     <a href="index.html" class="nav-logo" aria-label="Rekuperat - Inicio">
-      <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" />
+      <img src="assets/img/logo-rekuperat.png" alt="Rekuperat Fintech" />
     </a>
     <nav style="display:flex;align-items:center;gap:1.75rem;" id="desktopNav" aria-label="Navegación">
       <a href="index.html"           class="nav-link">Inicio</a>
@@ -150,11 +150,11 @@
 </header>
 
 <!-- ═══ HERO ═══ -->
-<section style="background:linear-gradient(135deg,#0D1B4B 0%,#1B2D78 38%,#1565C0 68%,#7CB342 100%);min-height:60vh;display:flex;align-items:center;padding-top:100px;padding-bottom:3rem;position:relative;overflow:hidden;" aria-labelledby="pa-heading">
+<section style="background:var(--grad-hero);min-height:60vh;display:flex;align-items:center;padding-top:100px;padding-bottom:3rem;position:relative;overflow:hidden;" aria-labelledby="pa-heading">
   <!-- Grid overlay -->
   <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;" aria-hidden="true"></div>
   <!-- Glow -->
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 80% 30%,rgba(124,179,66,.18),transparent),radial-gradient(ellipse 50% 60% at 20% 70%,rgba(21,101,192,.25),transparent);pointer-events:none;" aria-hidden="true"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 50% at 80% 30%,rgba(110,187,115,.18),transparent),radial-gradient(ellipse 50% 60% at 20% 70%,rgba(42,110,57,.25),transparent);pointer-events:none;" aria-hidden="true"></div>
   <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.1;z-index:0;" aria-hidden="true">
     <source src="assets/video/VIDEO HERO SECUNDARIO.mp4" type="video/mp4" />
   </video>
@@ -170,7 +170,7 @@
         </div>
 
         <h1 id="pa-heading" style="font-size:clamp(1.9rem,4.5vw,3.2rem);font-weight:900;color:white;line-height:1.12;letter-spacing:-.02em;margin:1rem 0;" class="au2">
-          Recupera el <span style="background:linear-gradient(135deg,#AED581,#7CB342);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Máximo Valor</span><br/>de tu Cartera Vencida
+          Recupera el <span style="background:linear-gradient(135deg,#FED102,#6EBB73);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Máximo Valor</span><br/>de tu Cartera Vencida
         </h1>
 
         <p style="color:rgba(255,255,255,.72);font-size:1.05rem;line-height:1.75;max-width:540px;margin-bottom:2rem;" class="au3">
@@ -430,7 +430,7 @@
 
       <!-- Info -->
       <div>
-        <div class="section-tag" style="background:rgba(124,179,66,.15);border-color:rgba(124,179,66,.3);color:var(--green);margin-bottom:1rem;" data-aos="fade-right">Demo Personalizada · Gratuita</div>
+        <div class="section-tag" style="background:rgba(110,187,115,.15);border-color:rgba(110,187,115,.3);color:var(--green);margin-bottom:1rem;" data-aos="fade-right">Demo Personalizada · Gratuita</div>
         <h2 style="color:white;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;margin-bottom:1.25rem;" data-aos="fade-right" data-aos-delay="100">
           ¿Listo para Optimizar<br/><span style="color:var(--green);">tu Recupero de Cartera</span>?
         </h2>
@@ -440,26 +440,27 @@
 
         <div style="display:flex;flex-direction:column;gap:.875rem;" data-aos="fade-right" data-aos-delay="250">
           <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
-            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(110,187,115,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
             <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Análisis de cartera sin costo ni compromiso</span>
           </div>
           <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
-            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(110,187,115,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
             <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Demo en vivo adaptada a tu tipo de cartera</span>
           </div>
           <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
-            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(110,187,115,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
             <span style="color:rgba(255,255,255,.85);font-size:.875rem;">Respuesta en menos de 24 horas hábiles</span>
           </div>
           <div style="display:flex;align-items:center;gap:.875rem;padding:1rem 1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);">
-            <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,179,66,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div style="width:38px;height:38px;border-radius:9px;background:rgba(110,187,115,.2);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
             <span style="color:rgba(255,255,255,.85);font-size:.875rem;">NDA disponible para entidades reguladas</span>
           </div>
         </div>
 
         <div style="margin-top:2rem;padding:1.25rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);" data-aos="fade-right" data-aos-delay="300">
           <div style="font-weight:700;color:white;font-size:.9rem;margin-bottom:.5rem;">📞 Contacto Directo</div>
-          <a href="mailto:info@recuperat.com" style="color:var(--green);font-size:.875rem;font-weight:600;">info@recuperat.com</a>
+          <a href="mailto:info@rekuperat.com" style="color:var(--green);font-size:.875rem;font-weight:600;">info@rekuperat.com</a><br/>
+          <a href="tel:+51992672660" style="color:var(--green);font-size:.875rem;font-weight:600;">+51 992 672 660</a>
           <div style="color:rgba(255,255,255,.45);font-size:.78rem;margin-top:.35rem;">Sede Lima · Av. República de Chile 324</div>
           <div style="color:rgba(255,255,255,.45);font-size:.78rem;">Sede Chiclayo · Lapoint 1221</div>
         </div>
@@ -541,7 +542,7 @@
               <input type="checkbox" id="dm-consent" name="consent" class="custom-check" required />
               <label for="dm-consent" style="font-size:.8rem;color:var(--text-muted);line-height:1.55;cursor:pointer;">
                 Acepto los <a href="terminos.html" style="color:var(--blue);font-weight:600;">Términos de Servicio</a> y la
-                <a href="privacidad.html" style="color:var(--blue);font-weight:600;">Política de Privacidad</a> de RECUPERAT S.A.C.
+                <a href="privacidad.html" style="color:var(--blue);font-weight:600;">Política de Privacidad</a> de Rekuperat
               </label>
             </div>
 
@@ -567,13 +568,26 @@
     <div class="container">
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;" class="grid-footer">
         <div>
-          <img src="LOGO - REKUPERAT.jpg" alt="Rekuperat Fintech" style="height:52px;border-radius:8px;background:white;padding:5px;margin-bottom:1.25rem;" />
+          <img src="assets/img/logo-rekuperat-light.png" alt="Rekuperat Fintech" style="height:52px;margin-bottom:1.25rem;" />
           <p style="color:rgba(255,255,255,.55);font-size:.875rem;line-height:1.75;max-width:280px;margin-bottom:1.5rem;">
             Infraestructura RegTech y Plataforma Fintech para la Cobranza y Reinserción en el Sistema Financiero Regulado del Perú.
           </p>
-          <div style="display:flex;gap:.75rem;">
-            <a href="#" class="social-btn" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-            <a href="mailto:info@recuperat.com" class="social-btn" aria-label="Email"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></a>
+          <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.25rem;">
+            <a href="tel:+51992672660" style="display:inline-flex;align-items:center;gap:.6rem;color:rgba(255,255,255,.75);font-size:.85rem;font-weight:600;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9A16 16 0 0 0 15 16.09l1.8-1.8a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +51 992 672 660
+            </a>
+            <a href="mailto:info@rekuperat.com" style="display:inline-flex;align-items:center;gap:.6rem;color:rgba(255,255,255,.75);font-size:.85rem;font-weight:600;">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              info@rekuperat.com
+            </a>
+          </div>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+            <a href="https://www.facebook.com/profile.php?id=61589970911068" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/somosrekuperatfintech/" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://www.tiktok.com/@somosrekuperatfintech" target="_blank" rel="noopener" class="social-btn" aria-label="TikTok"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43V8.41a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.84z"/></svg></a>
+            <a href="https://www.youtube.com/channel/UCdSwRyLhpWjsanbmj6lQZhw" target="_blank" rel="noopener" class="social-btn" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="https://wa.me/51992672660" target="_blank" rel="noopener" class="social-btn" aria-label="WhatsApp"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
           </div>
         </div>
         <div>
@@ -594,7 +608,7 @@
     </div>
   </div>
   <div class="footer-bottom container">
-    <p style="color:rgba(255,255,255,.38);font-size:.8rem;">© 2026 <strong style="color:rgba(255,255,255,.6);">RECUPERAT S.A.C.</strong> · info@recuperat.com · Lima y Chiclayo, Perú</p>
+    <p style="color:rgba(255,255,255,.38);font-size:.8rem;">© 2026 <strong style="color:rgba(255,255,255,.6);">Rekuperat</strong> · info@rekuperat.com · +51 992 672 660 · Lima y Chiclayo, Perú</p>
     <span style="display:flex;align-items:center;gap:.4rem;color:var(--green);font-size:.75rem;font-weight:600;">
       <span style="width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;"></span>
       Plataforma Activa 24/7
@@ -627,6 +641,11 @@
 <script src="assets/js/security.js"   defer></script>
 <script src="assets/js/seo.js"        defer></script>
 <script src="assets/js/app.js"        defer></script>
+
+<!-- WhatsApp flotante -->
+<a href="https://wa.me/51992672660?text=Hola%20Rekuperat%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios." target="_blank" rel="noopener" class="wa-float" aria-label="Escríbenos por WhatsApp" title="Escríbenos por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.247-.694.247-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
 
 </body>
 </html>

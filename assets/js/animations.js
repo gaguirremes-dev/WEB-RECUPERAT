@@ -65,13 +65,15 @@ function initGradientShift() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
 
+  /* Must mirror --grad-hero in styles.css */
+  const stops = '#071A22 0%, #0C232E 46%, #123B3E 76%, #1E5A31 100%';
+
   let angle = 135;
   let dir = 1;
   setInterval(() => {
     angle += dir * 0.3;
     if (angle > 155 || angle < 115) dir *= -1;
-    hero.style.backgroundImage =
-      `linear-gradient(${angle}deg, #0D1B4B 0%, #1B2D78 38%, #1565C0 68%, #7CB342 100%)`;
+    hero.style.backgroundImage = `linear-gradient(${angle.toFixed(1)}deg, ${stops})`;
   }, 50);
 }
 
