@@ -873,3 +873,21 @@ a { text-decoration: none; color: inherit; }
   .navbar .btn svg { width: 14px; height: 14px; }
   .navbar .container { gap: .5rem !important; }
 }
+
+/* ─── Libro de Reclamaciones card (footer badge) ─── */
+.libro-wrap { margin-top:1.25rem; }
+.libro-card {
+  display:block; width:128px; max-width:100%; aspect-ratio:1/1;
+  border-radius:1rem; overflow:hidden; background:#fff;
+  box-shadow:0 4px 14px rgba(0,0,0,.28); outline:1px solid rgba(255,255,255,.18); outline-offset:-1px;
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.libro-card:hover, .libro-card:focus-visible { transform:translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,.4); }
+.libro-card img { display:block; width:100%; height:100%; object-fit:cover; border-radius:1rem; }
+.libro-mail { display:inline-block; margin-top:.6rem; color:rgba(255,255,255,.55); font-size:.78rem; word-break:break-all; }
+.libro-mail:hover { color:var(--green); }
+.libro-wrap.is-centered { display:flex; flex-direction:column; align-items:center; margin:0 0 1.25rem; }
+@media (prefers-reduced-motion: reduce) {
+  .libro-card { transition:none; }
+  .libro-card:hover, .libro-card:focus-visible { transform:none; }
+}
